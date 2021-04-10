@@ -67,6 +67,7 @@ function getData(
   return new Promise(async (resolve, reject) => {
     try {
       const database = await connectDatabase("fifa");
+
       const result = await database
         .collection(collectionName)
         .find(condition)
@@ -78,13 +79,52 @@ function getData(
       if (result.length > 0) {
         resolve(result);
       } else {
-        throw "Not Found";
+        resolve("Not Found");
       }
     } catch (error) {
       reject(error);
     }
   });
 }
+
+app.get("/searchPlayer/:playerName", async (req, res) => {
+  try {
+    const playerName = req.params.playerName;
+    const collectionName = "players";
+    const sortField = "age";
+    const sortBy = -1;
+    const limit = 0;
+    const textArray = playerName.split(" ");
+    let regexArray = [];
+
+    //create regex array for each word
+    textArray.map((currentText) => {
+      regexArray.push(new RegExp(currentText, "i"));
+    });
+    //prettier-ignore
+    const condition = {
+      name: {
+        $all: regexArray,
+      },
+    };
+
+    const searchResult = await getData(
+      collectionName,
+      sortField,
+      sortBy,
+      limit,
+      condition
+    );
+
+    if (searchResult != "Not Found") {
+      res.status(200).send(searchResult);
+    } else {
+      res.status(404).send("Not Found");
+    }
+  } catch (error) {
+    res.status(500).send("Server Error");
+  }
+});
 
 module.exports = {
   app: app,
