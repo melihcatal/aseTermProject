@@ -5,7 +5,7 @@ const { MongoClient } = require("mongodb");
 const request = supertest(server.app);
 require("dotenv").config();
 
-describe("Test sets for database service", () => {
+describe("Database Functions Testing", () => {
   beforeAll(async () => {
     const mongoUrl = process.env.MONGO_URL;
     const splittedUrl = mongoUrl.split("/");
@@ -17,7 +17,7 @@ describe("Test sets for database service", () => {
     });
 
     const database = connection.db();
-    const users = database.collection("users");
+    const users = database.collection("players");
     const user = {
       _id: -1,
       name: "Melih Catal",
@@ -52,8 +52,8 @@ describe("Test sets for database service", () => {
     ).rejects.toThrowError();
   });
 
-  it("Test getting data from database with desired features", async () => {
-    const existCollection = "users";
+  it("Test getting data from database with desired features", async (done) => {
+    const existCollection = "players";
     const notExistCollection = "weather";
     const user = [
       {
@@ -64,14 +64,36 @@ describe("Test sets for database service", () => {
       },
     ];
     await expect(
-      server.getData(existCollection, "age", -1, 0)
+      server.getData(existCollection, "age", -1, 0, {})
     ).resolves.toMatchObject(user);
     await expect(
-      server.getData(notExistCollection, "age", -1, 0)
-    ).rejects.toContain("Not Found");
+      server.getData(notExistCollection, "age", -1, 0, {})
+    ).resolves.toContain("Not Found");
 
     await expect(
       server.connectDatabase(notExistCollection)
     ).rejects.toThrowError();
+
+    done();
+  });
+
+  it("Search Player", async () => {
+    const fullName = "Melih Catal";
+    const partialName = "Me";
+    const partialNameSurName = "Me Ca";
+    const absentPlayerName = "Simge";
+
+    expect((await request.get(`/searchPlayer/${fullName}`)).status).toEqual(
+      200
+    );
+    expect((await request.get(`/searchPlayer/${partialName}`)).status).toEqual(
+      200
+    );
+    expect(
+      (await request.get(`/searchPlayer/${partialNameSurName}`)).status
+    ).toEqual(200);
+    expect(
+      (await request.get(`/searchPlayer/${absentPlayerName}`)).status
+    ).toEqual(404);
   });
 });
