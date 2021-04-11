@@ -2,9 +2,9 @@ name: database
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main,develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main ,develop]
 
 env:
   IMAGE_NAME: 'melihcatal/database'
