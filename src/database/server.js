@@ -66,7 +66,7 @@ function getData(
 ) {
   return new Promise(async (resolve, reject) => {
     try {
-      const database = await connectDatabase("fifa");
+      const database = await connectDatabase(process.env.MONGO_DATABASE);
 
       const result = await database
         .collection(collectionName)
@@ -83,6 +83,30 @@ function getData(
       }
     } catch (error) {
       reject(error);
+    }
+  });
+}
+
+function getDataByID(collectionName, id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const database = await connectDatabase(process.env.MONGO_DATABASE);
+      const condition = {
+        _id: id,
+      };
+
+      const result = await database
+        .collection(collectionName)
+        .find(condition)
+        .toArray();
+
+      if (result.length > 0) {
+        resolve(result);
+      } else {
+        resolve("Not Found");
+      }
+    } catch (error) {
+      reject("Error");
     }
   });
 }
@@ -126,9 +150,26 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
   }
 });
 
+app.get("/getPlayer/:id", async (req, res) => {
+  try {
+    const collectionName = "players";
+    const id = parseInt(req.params.id);
+    const result = await getDataByID(collectionName, id);
+
+    if (result != "Not Found") {
+      res.status(200).send(result);
+    } else {
+      res.status(404).send("Not Found");
+    }
+  } catch (error) {
+    res.status(500).send("Error");
+  }
+});
+
 module.exports = {
   app: app,
   databaseExist: databaseExist,
   connectDatabase: connectDatabase,
   getData: getData,
+  getDataByID: getDataByID,
 };
