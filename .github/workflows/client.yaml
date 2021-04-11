@@ -1,21 +1,22 @@
-name: database
+name: client
 
 on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main,develop ]
+    branches: [ main ,develop]
 
 env:
-  IMAGE_NAME: 'melihcatal/database'
+  IMAGE_NAME: 'melihcatal/client'
   MONGOMS_ARCH: x64
+
 
 
 jobs:
   test:
     defaults:
       run:
-        working-directory: ./src/database
+        working-directory: ./src/client
 
     runs-on: ubuntu-latest
     steps:
@@ -44,7 +45,7 @@ jobs:
           image: ${{env.IMAGE_NAME}}
           registry: docker.io
           tags: latest
-          directory: ./src/database
-          dockerfile: ./src/database/Dockerfile
+          directory: ./src/client
+          dockerfile: ./src/client/Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
