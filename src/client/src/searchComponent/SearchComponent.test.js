@@ -11,12 +11,13 @@ beforeEach(() => {
 describe("Search Component Test", () => {
   it("Test Search Component and Results ", async () => {
     const initialResults = "";
-    const searchText = "Messi";
+    const searchText = "Ronaldo";
     const searchInput = wrapper.find("input");
     const resolveData = [
       {
-        playerName: "Lionel Messi",
-        id: -1,
+        playerName: "Ronaldo",
+        playerId: 1,
+        imageSource: "https://cdn.sofifa.com/players/020/801/19_240.png",
       },
     ];
 
@@ -35,5 +36,6 @@ describe("Search Component Test", () => {
     wrapper.update();
     resultsComponent = wrapper.find("Results");
     expect(resultsComponent).toHaveLength(1);
+    expect(resultsComponent.props().results).toBe(resolveData);
   });
 });
