@@ -1,37 +1,30 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Results from "./results/Results";
+import SearchBar from "./search/SearchBar";
 
 class SearchComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: "",
+      results: null,
     };
+    this.getPlayerData = this.getPlayerData.bind(this);
   }
 
-  async getPlayerData() {
-    const searchText = this.state.searchText;
+  async getPlayerData(searchText) {
     const url = `http://database:3000/searchPlayer/${searchText}`;
-    const result = await axios.get(url);
+    const results = await axios.get(url);
+    this.setState({
+      results: results,
+    });
   }
 
   render() {
     return (
       <div>
-        <input
-          type="text"
-          defaultValue={this.state.searchText}
-          onChange={(e) => {
-            this.setState(
-              {
-                searchText: e.target.value,
-              },
-              () => {
-                this.getPlayerData();
-              }
-            );
-          }}
-        />
+        <SearchBar getPlayerData={this.getPlayerData} />
+        {this.state.results && <Results result={this.state.results} />}
       </div>
     );
   }
