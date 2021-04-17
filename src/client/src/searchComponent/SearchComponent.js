@@ -11,10 +11,10 @@ class SearchComponent extends Component {
 
   async getPlayerData() {
     const searchText = this.state.searchText;
-    console.log("sear => " + searchText);
     const url = `http://database:3000/searchPlayer/${searchText}`;
     const result = await axios.get(url);
   }
+
   render() {
     return (
       <div>
