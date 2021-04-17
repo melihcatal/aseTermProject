@@ -9,6 +9,7 @@
         "axios": "^0.21.1",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.6",
+        "jsonschema": "^1.4.0",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "react-router": "^5.2.0",

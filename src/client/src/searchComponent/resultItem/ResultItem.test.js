@@ -1,7 +1,6 @@
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 import ResultItem from "./ResultItem";
-import { Link, MemoryRouter } from "react-router-dom";
-import renderer from "react-test-renderer";
+import { MemoryRouter } from "react-router-dom";
 
 let wrapper;
 let player;
