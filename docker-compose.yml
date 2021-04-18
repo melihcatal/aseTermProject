@@ -1,12 +1,22 @@
-version: '3.4'
+version: "3.4"
 
 services:
-  database:
-    image: database
-    build:
-      context: src/database
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+  client:
+    image: melihcatal/client
+    build: src/client
     ports:
       - 3000:3000
+  database:
+    image: melihcatal/database
+    build: src/database
+    ports:
+      - 3001:3000
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+    driver: local
