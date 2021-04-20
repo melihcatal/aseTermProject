@@ -1,16 +1,6 @@
 version: "3.4"
 
 services:
-  client:
-    image: melihcatal/client
-    build: src/client
-    ports:
-      - 3000:3000
-  database:
-    image: melihcatal/database
-    build: src/database
-    ports:
-      - 3001:3000
   mongo:
     image: mongo
     ports:
