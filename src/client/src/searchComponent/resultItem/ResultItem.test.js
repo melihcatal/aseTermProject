@@ -7,9 +7,10 @@ let player;
 
 beforeEach(() => {
   player = {
-    playerName: "Ronaldo",
-    playerId: 1,
-    imageSource: "https://cdn.sofifa.com/players/020/801/19_240.png",
+    name: "Ronaldo",
+    _id: 1,
+    imageUrl: "https://cdn.sofifa.com/players/020/801/19_240.png",
+    overall: 86,
   };
 
   wrapper = shallow(
@@ -24,13 +25,16 @@ describe("Search Result Item Testing", () => {
   it("Test image and name properties ", () => {
     const name = wrapper.find("h3");
     const image = wrapper.find("img");
+    const overall = wrapper.find("h4");
 
-    expect(name.text()).toBe(player.playerName);
-    expect(image.props().src).toBe(player.imageSource);
+    expect(name.text()).toBe(player.name);
+    expect(overall.text()).toBe(player.overall.toString());
+
+    expect(image.props().src).toBe(player.imageUrl);
   });
 
   it("Testing Link", () => {
     const link = wrapper.find("Link");
-    expect(link.props().to).toBe(`/players/${player.playerId}`);
+    expect(link.props().to).toBe(`/players/${player._id}`);
   });
 });

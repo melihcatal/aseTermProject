@@ -21,15 +21,16 @@ function Results(props) {
     let tempArray = [];
     try {
       if (props.results.length > 0) {
+        setWarning(null);
+
         props.results.map((result) => {
           const isValid = validator.validate(result, schema).valid;
           if (!isValid) {
             throw "Error";
           }
 
-          const currentItem = (
-            <ResultItem key={result.playerId} player={result} />
-          );
+          const currentItem = <ResultItem key={result._id} player={result} />;
+
           tempArray.push(currentItem);
         });
         setResultItems(tempArray);
@@ -39,7 +40,9 @@ function Results(props) {
     } catch (error) {
       setWarning(error);
     }
-  }, []);
+  }, [props.results]);
+
+  // return <div>{warning ? <h3>{warning}</h3> : resultItemsArray}</div>;
 
   return <div>{warning ? <h3>{warning}</h3> : resultItemsArray}</div>;
 }

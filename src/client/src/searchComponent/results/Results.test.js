@@ -8,12 +8,12 @@ describe("Search Result Testing", () => {
   it("Test Rendering with Found Results ", () => {
     const player1 = {
       playerName: "Ronaldo",
-      playerId: 1,
+      _id: 1,
       imageSource: "https://cdn.sofifa.com/players/020/801/19_240.png",
     };
     const player2 = {
       playerName: "Messi",
-      playerId: 2,
+      _id: 2,
       imageSource: "https://cdn.sofifa.com/players/158/023/21_240.png",
     };
     const results = [player1, player2];

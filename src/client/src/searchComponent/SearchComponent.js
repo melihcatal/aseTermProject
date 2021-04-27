@@ -13,18 +13,46 @@ class SearchComponent extends Component {
   }
 
   async getPlayerData(searchText) {
-    const url = `http://database:3000/searchPlayer/${searchText}`;
-    const results = await axios.get(url);
-    this.setState({
-      results: results,
-    });
+    try {
+      console.log("searchText => " + searchText);
+      if (searchText != "") {
+        // const url = `http://${process.env.DATABASE_URL}/searchPlayer/${searchText}`;
+        const url = `/searchPlayer/${searchText}`;
+
+        const results = await axios.get(url);
+
+        this.setState({
+          results: results.data,
+        });
+      } else {
+        this.setState({
+          results: null,
+        });
+      }
+    } catch (error) {
+      const statusCode = error.response.status;
+      if (statusCode == 404) {
+        this.setState({
+          results: [],
+        });
+      } else {
+        this.setState({
+          results: null,
+        });
+        alert("Server Error");
+      }
+    }
+  }
+
+  componentDidMount() {
+    console.log("asdf => " + JSON.stringify(process.env, null, 2));
   }
 
   render() {
     return (
       <div>
         <SearchBar getPlayerData={this.getPlayerData} />
-        {this.state.results && <Results results={this.state.results} />}
+        {this.state.results != null && <Results results={this.state.results} />}
       </div>
     );
   }
