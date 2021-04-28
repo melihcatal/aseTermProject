@@ -1,9 +1,12 @@
-
 {
     "typeAcquisition": {
         "include": [
             "jest",
             "enzyme"
         ]
-    }
+    },
+    "tabnine.disable_file_regex": [
+        "^[a-zA-Z]+\\.test\\.js$",
+        "[.]css$",
+      ]
 }

@@ -44,7 +44,11 @@ function Results(props) {
 
   // return <div>{warning ? <h3>{warning}</h3> : resultItemsArray}</div>;
 
-  return <div>{warning ? <h3>{warning}</h3> : resultItemsArray}</div>;
+  return (
+    <div id={"HeaderSearchResultsDiv"}>
+      {warning ? <h3>{warning}</h3> : resultItemsArray}
+    </div>
+  );
 }
 
 export default Results;

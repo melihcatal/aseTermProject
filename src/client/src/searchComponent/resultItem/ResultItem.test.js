@@ -9,7 +9,8 @@ beforeEach(() => {
   player = {
     name: "Ronaldo",
     _id: 1,
-    imageUrl: "https://cdn.sofifa.com/players/020/801/19_240.png",
+    imageUrl:
+      "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/101317.png",
     overall: 86,
   };
 
