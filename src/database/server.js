@@ -1,10 +1,12 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
-require("dotenv").config();
+require("dotenv").config({
+  path: "../../.env",
+});
+const cors = require("cors");
 
 const app = express();
-
-const port = 3000;
+app.use(cors());
 
 function databaseExist(databaseName) {
   return new Promise(async (resolve, reject) => {
@@ -62,18 +64,26 @@ function getData(
   sortBy,
   limit,
   condition,
-  projection = {}
+  projection = null,
+  group = null
 ) {
   return new Promise(async (resolve, reject) => {
     try {
       const database = await connectDatabase(process.env.MONGO_DATABASE);
 
+      const aggregation = [
+        { $match: condition },
+        ...(group ? [{ $group: group }] : []),
+        ...(projection ? [{ $project: projection }] : []),
+        { $sort: { [sortField]: sortBy } },
+        ...(limit ? [{ $limit: limit }] : []),
+      ];
+
       const result = await database
         .collection(collectionName)
-        .find(condition)
-        .project(projection)
-        .sort({ [sortField]: sortBy })
-        .limit(limit)
+        .aggregate(aggregation, {
+          allowDiskUse: true,
+        })
         .toArray();
 
       if (result.length > 0) {
@@ -111,23 +121,41 @@ function getDataByID(collectionName, id) {
   });
 }
 
+function textRegex(text) {
+  const textArray = text.split(" ");
+
+  let regexArray = [];
+
+  //create regex array for each word
+  textArray.map((currentText) => {
+    regexArray.push(new RegExp(currentText, "i"));
+  });
+
+  return regexArray;
+}
+
 app.get("/searchPlayer/:playerName", async (req, res) => {
   try {
     const playerName = req.params.playerName;
     const collectionName = "players";
-    const sortField = "age";
+    const sortField = "overall";
     const sortBy = -1;
-    const limit = 0;
-    const textArray = playerName.split(" ");
-    let regexArray = [];
+    const limit = 5;
+    const group = {
+      _id: "$sofifa_id",
+      name: { $last: "$long_name" },
+      year: { $max: "$year" },
 
-    //create regex array for each word
-    textArray.map((currentText) => {
-      regexArray.push(new RegExp(currentText, "i"));
-    });
+      overall: { $max: "$overall" },
+      imageUrl: { $last: "$imageUrl" },
+    };
+    const projection = null;
+
+    const regexArray = textRegex(playerName);
+
     //prettier-ignore
     const condition = {
-      name: {
+      long_name: {
         $all: regexArray,
       },
     };
@@ -137,7 +165,9 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
       sortField,
       sortBy,
       limit,
-      condition
+      condition,
+      projection,
+      group
     );
 
     if (searchResult != "Not Found") {
@@ -146,14 +176,14 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
       res.status(404).send("Not Found");
     }
   } catch (error) {
-    res.status(500).send("Server Error");
+    res.status(500).send(error);
   }
 });
 
 app.get("/getPlayer/:id", async (req, res) => {
   try {
     const collectionName = "players";
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const result = await getDataByID(collectionName, id);
 
     if (result != "Not Found") {
