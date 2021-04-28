@@ -19,7 +19,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "NODE_OPTIONS=--unhandled-rejections=warn CI=true react-scripts test ",
+        "test": "CI=false react-scripts test ",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

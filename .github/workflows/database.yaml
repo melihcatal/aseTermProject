@@ -9,6 +9,7 @@ on:
 env:
   IMAGE_NAME: 'melihcatal/database'
   MONGOMS_ARCH: x64
+  MONGO_DATABASE: 'fifa'
 
 
 
