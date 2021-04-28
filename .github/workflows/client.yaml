@@ -9,8 +9,7 @@ on:
 env:
   IMAGE_NAME: 'melihcatal/client'
   MONGOMS_ARCH: x64
-
-
+  CI: false
 
 jobs:
   test:
