@@ -1,0 +1,7 @@
+#headerNavigation {
+  display: inline-flex;
+  width: 15%;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 1%;
+}
