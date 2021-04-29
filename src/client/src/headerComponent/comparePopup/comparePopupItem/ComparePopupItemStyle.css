@@ -1,0 +1,12 @@
+#comparePopupItemDiv {
+  width: 20%;
+  display: inline-block;
+  padding: 5%;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+#comparePopupItemDiv img {
+  width: 100%;
+}
