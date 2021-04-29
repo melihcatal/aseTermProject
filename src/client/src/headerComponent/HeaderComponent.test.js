@@ -10,4 +10,9 @@ describe("Header Testing", () => {
     const searchBar = wrapper.find("SearchComponent");
     expect(searchBar.length).toBe(1);
   });
+
+  it("should render Navigations", () => {
+    const navBars = wrapper.find("HeaderNavigation");
+    expect(navBars.length).toBe(1);
+  });
 });

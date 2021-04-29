@@ -1,5 +1,8 @@
 #searchDiv {
   width: 20%;
+  float: left;
+  display: block;
+  margin-right: 30%;
 }
 
 #searchDiv input {
@@ -17,7 +20,7 @@
   position: absolute;
   display: block;
   width: 40%;
-  height: 30%;
+  height: 270%;
   text-align: center;
   margin-top: 0.5%;
   border-style: none;
