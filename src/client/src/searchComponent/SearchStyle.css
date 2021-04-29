@@ -1,5 +1,8 @@
 #searchDiv {
   width: 20%;
+  float: left;
+  display: block;
+  margin-right: 30%;
 }
 
 #searchDiv input {

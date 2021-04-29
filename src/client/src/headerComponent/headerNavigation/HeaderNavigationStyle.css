@@ -1,0 +1,13 @@
+#headerNavigation {
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+  padding-top: 1%;
+}
+#headerNavigation img {
+  width: 30%;
+  display: inline-block;
+}
+#headerNavigation h5 {
+  margin-top: -1%;
+}

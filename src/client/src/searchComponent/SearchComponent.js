@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Results from "./results/Results";
 import SearchBar from "./search/SearchBar";
+import "./SearchStyle.css";
 
 class SearchComponent extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class SearchComponent extends Component {
 
   render() {
     return (
-      <div>
+      <div id="searchDiv">
         <SearchBar getPlayerData={this.getPlayerData} />
         {this.state.results != null && <Results results={this.state.results} />}
       </div>
