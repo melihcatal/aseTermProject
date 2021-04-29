@@ -11,8 +11,8 @@ describe("Header Testing", () => {
     expect(searchBar.length).toBe(1);
   });
 
-  it("should render two NavigationBars", () => {
+  it("should render Navigations", () => {
     const navBars = wrapper.find("HeaderNavigation");
-    expect(navBars.length).toBe(2);
+    expect(navBars.length).toBe(1);
   });
 });

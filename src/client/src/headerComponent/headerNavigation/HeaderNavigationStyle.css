@@ -1,13 +1,7 @@
 #headerNavigation {
-  display: inline-block;
-  width: 10%;
-  text-align: center;
+  display: inline-flex;
+  width: 15%;
+  align-items: flex-end;
+  justify-content: center;
   padding-top: 1%;
-}
-#headerNavigation img {
-  width: 30%;
-  display: inline-block;
-}
-#headerNavigation h5 {
-  margin-top: -1%;
 }
