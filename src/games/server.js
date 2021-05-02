@@ -8,7 +8,7 @@ require("dotenv").config({
   path: "../../.env",
 });
 
-function getFixtureById(id) {
+function getFixtureByID(id) {
   return new Promise(async (resolve, reject) => {
     try {
       const endPoint = `https://api-football-v1.p.rapidapi.com/v2/fixtures/id/${id}?timezone=${process.env.FOOTBALL_API_TIMEZONE}`;
@@ -46,9 +46,9 @@ function getFixtureById(id) {
   });
 }
 
-app.get("/getFixture/:id", async (req, res) => {
+app.get("/getFixtureByID/:id", async (req, res) => {
   try {
-    const result = await getFixtureById(req.params.id);
+    const result = await getFixtureByID(req.params.id);
     res.status(200).send(result);
   } catch (error) {
     if (error == "Not Found") {
@@ -58,7 +58,8 @@ app.get("/getFixture/:id", async (req, res) => {
     }
   }
 });
+
 module.exports = {
   app: app,
-  getFixtureById: getFixtureById,
+  getFixtureByID: getFixtureByID,
 };

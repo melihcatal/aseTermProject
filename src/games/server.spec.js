@@ -7,7 +7,7 @@ describe("API-FOOTBALL Functions Test", () => {
   it("should return wrong fixture id error", async () => {
     const id = "587405";
     try {
-      await server.getFixtureById(id);
+      await server.getFixtureByID(id);
     } catch (error) {
       expect(error).toBe("Not Found");
     }
@@ -31,22 +31,27 @@ describe("API-FOOTBALL Functions Test", () => {
     };
 
     expect.assertions(1);
-    await expect(server.getFixtureById(id)).resolves.toMatchObject(
+    await expect(server.getFixtureByID(id)).resolves.toMatchObject(
       expectedResponse
     );
+  });
+
+  it("should get get fixtures by league id ", async () => {
+    const leagueID = "1";
+    await expect(server.getFixtureByLeague).resolves;
   });
 });
 
 describe("API-FOOTBALL Api Testing", () => {
   it("should get 404 for not found fixture", async (done) => {
     const id = "xyz";
-    expect((await request.get(`/getFixture/${id}`)).status).toEqual(404);
+    expect((await request.get(`/getFixtureByID/${id}`)).status).toEqual(404);
     done();
   });
 
   it("should get 200 for  found fixture", async (done) => {
     const id = "157201";
-    expect((await request.get(`/getFixture/${id}`)).status).toEqual(200);
+    expect((await request.get(`/getFixtureByID/${id}`)).status).toEqual(200);
     done();
   });
 });
