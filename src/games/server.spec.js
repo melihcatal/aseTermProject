@@ -3,7 +3,7 @@ const supertest = require("supertest");
 const request = supertest(server.app);
 require("dotenv").config();
 
-describe("API-FOOTBALL test", () => {
+describe("API-FOOTBALL Functions Test", () => {
   it("should return wrong fixture id error", async () => {
     const id = "587405";
     try {
@@ -34,5 +34,19 @@ describe("API-FOOTBALL test", () => {
     await expect(server.getFixtureById(id)).resolves.toMatchObject(
       expectedResponse
     );
+  });
+});
+
+describe("API-FOOTBALL Api Testing", () => {
+  it("should get 404 for not found fixture", async (done) => {
+    const id = "xyz";
+    expect((await request.get(`/getFixture/${id}`)).status).toEqual(404);
+    done();
+  });
+
+  it("should get 200 for  found fixture", async (done) => {
+    const id = "157201";
+    expect((await request.get(`/getFixture/${id}`)).status).toEqual(200);
+    done();
   });
 });

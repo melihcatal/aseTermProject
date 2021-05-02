@@ -46,6 +46,18 @@ function getFixtureById(id) {
   });
 }
 
+app.get("/getFixture/:id", async (req, res) => {
+  try {
+    const result = await getFixtureById(req.params.id);
+    res.status(200).send(result);
+  } catch (error) {
+    if (error == "Not Found") {
+      res.status(404).send("Not Found");
+    } else {
+      res.status(500).send("Server Error");
+    }
+  }
+});
 module.exports = {
   app: app,
   getFixtureById: getFixtureById,
