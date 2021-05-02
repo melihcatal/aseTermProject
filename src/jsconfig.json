@@ -7,6 +7,7 @@
     },
     "tabnine.disable_file_regex": [
         "^[a-zA-Z]+\\.test\\.js$",
+        "^[a-zA-Z]+\\.spec\\.js$",
         "[.]css$",
       ]
 }
