@@ -9,10 +9,8 @@ function PlayerCharts(props) {
     try {
       if (props.chartInfo.length > 0) {
         let tempArray = [];
-        props.chartInfo.map((currentInfo) => {
-          const currentChart = (
-            <CustomChart data={currentInfo.data} type={currentInfo.type} />
-          );
+        props.chartInfo.map((chartInfo) => {
+          const currentChart = <CustomChart chartInfo={chartInfo} />;
           tempArray.push(currentChart);
         });
         setChartItems(tempArray);
