@@ -49,7 +49,6 @@ test("Should render certain number of charts", () => {
 
   const response = [chartInfo, chartInfo, chartInfo, chartInfo];
   const wrapper = mount(<PlayerCharts chartInfo={response} />);
-  console.log("wrapper => " + wrapper.debug());
   const charts = wrapper.find("CustomChart");
   expect(charts.length).toEqual(response.length);
 });
