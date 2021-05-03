@@ -1,14 +1,11 @@
 import React from "react";
-import ChartComponent from "react-chartjs-2";
+import ChartComponent, { Radar } from "react-chartjs-2";
 
 function CustomChart(props) {
   return (
     <div>
-      <ChartComponent
-        data={props.data}
-        type={props.type}
-        options={props.options}
-      />
+      <ChartComponent data={props.data} type={props.type} />
+      {/* <Radar data={props.data} /> */}
     </div>
   );
 }
