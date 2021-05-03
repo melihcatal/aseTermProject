@@ -23,9 +23,11 @@ test("Should render certain number of player info items and player identiy", () 
     <PlayerInfoComponent data={response} playerInfo={playerInfo} />
   );
   const infoItems = wrapper.find("PlayerInfoItem");
+  const identiyInfo = wrapper.find("PlayerIdentiy");
+
   const warning = wrapper.find(".warning");
   expect(warning.length).toEqual(0);
-
+  expect(identiyInfo.length).toEqual(1);
   expect(infoItems.length).toEqual(response.length);
 });
 
@@ -35,6 +37,10 @@ test("Should warn about no data", () => {
 
   const infoItems = wrapper.find("PlayerInfoItem");
   const warning = wrapper.find(".warning");
+  const identiyInfo = wrapper.find("PlayerIdentiy");
+
   expect(infoItems.length).toEqual(response.length);
+  expect(identiyInfo.length).toEqual(0);
+
   expect(warning.length).toEqual(1);
 });
