@@ -206,9 +206,37 @@ app.get("/getPlayer/:id", async (req, res) => {
         imageUrl: result.imageUrl,
       };
 
+      const chartData = {
+        labels: [
+          "Finishing",
+          "Volleys",
+          "Crossing",
+          "Short Passing",
+          "Heading Accuracy",
+        ],
+        datasets: [
+          {
+            label: "Attacking",
+            data: [
+              result.attacking_finishing,
+              result.attacking_volleys,
+              result.attacking_crossing,
+              result.attacking_short_passing,
+              result.attacking_heading_accuracy,
+            ],
+          },
+        ],
+      };
+
+      const chartInfo = {
+        data: chartData,
+        type: "radar",
+      };
+
       const response = {
         playerData: playerData,
         playerInfo: playerInfo,
+        chartData: [chartInfo, chartInfo],
       };
 
       res.status(200).send(response);

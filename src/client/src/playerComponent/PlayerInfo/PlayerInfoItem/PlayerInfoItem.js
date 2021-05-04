@@ -1,4 +1,5 @@
 import React from "react";
+import "./PlayerInfoItemStyle.css";
 
 function PlayerInfoItem(props) {
   const title = Object.keys(props.data)[0];

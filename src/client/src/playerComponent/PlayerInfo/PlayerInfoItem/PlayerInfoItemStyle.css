@@ -1,0 +1,13 @@
+#playerInfoDiv {
+  padding: 0.5%;
+  display: inline-block;
+  text-align: center;
+  border-style: none;
+  box-shadow: 0px 0px 10px 5px rgba(255, 0, 5, 0.1);
+  border-radius: 10%;
+  margin: 1%;
+  width: 7%;
+  height: 5%;
+  font-size: 13px;
+  font-family: "Times New Roman", Times, serif;
+}

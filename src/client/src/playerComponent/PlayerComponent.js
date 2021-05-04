@@ -1,5 +1,6 @@
 import PlayerCharts from "./playerCharts/PlayerCharts";
 import PlayerInfoComponent from "./PlayerInfo/PlayerInfoComponent";
+import "./PlayerComponentStyle.css";
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -18,32 +19,25 @@ class PlayerComponent extends Component {
 
   async getPlayerData() {
     try {
-      console.log("anan ");
       const playerID = this.props.match.params.id;
       const url = `http://localhost:3001/getPlayer/${playerID}`;
       const results = await axios.get(url);
-      console.log("result => " + JSON.stringify(results, null, 2));
       const playerDataLength = Object.keys(results.data.playerData).length;
-      console.log("length => " + playerDataLength);
-      // if (playerDataLength > 0 && results.data.chartData.length > 0)
-      if (playerDataLength > 0) {
-        console.log("if");
+      if (playerDataLength > 0 && results.data.chartData.length > 0) {
         const resultDiv = (
-          <div>
+          <div id="playerComponentDiv">
             <PlayerInfoComponent
               playerData={results.data.playerData}
               playerInfo={results.data.playerInfo}
             />
-            {/* <PlayerCharts chartInfo={results.data.chartData} /> */}
+            <PlayerCharts chartInfo={results.data.chartData} />
           </div>
         );
 
-        console.log("results div => " + resultDiv);
         this.setState({
           results: resultDiv,
         });
       } else {
-        console.log("else");
         throw "Error";
       }
     } catch (error) {

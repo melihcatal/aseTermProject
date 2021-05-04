@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlayerIdentiy from "./PlayerIdentiy/PlayerIdentiy";
 import PlayerInfoItem from "./PlayerInfoItem/PlayerInfoItem";
+import "./PlayerInfoComponentStyle.css";
 
 function PlayerInfoComponent(props) {
   const [infoItems, setInfoItems] = useState(null);
@@ -25,7 +26,7 @@ function PlayerInfoComponent(props) {
         }
 
         const infoItems = (
-          <div>
+          <div id="playerInfo">
             <PlayerIdentiy playerInfo={props.playerInfo} />
             {tempArray}
           </div>
