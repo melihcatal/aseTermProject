@@ -24,11 +24,6 @@ function Results(props) {
         setWarning(null);
 
         props.results.map((result) => {
-          const isValid = validator.validate(result, schema).valid;
-          if (!isValid) {
-            throw "Error";
-          }
-
           const currentItem = <ResultItem key={result._id} player={result} />;
 
           tempArray.push(currentItem);

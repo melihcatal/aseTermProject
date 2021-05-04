@@ -23,6 +23,7 @@ beforeAll(async () => {
   const users = database.collection("players");
   const user = {
     _id: -1,
+    sofifa_id: 2,
     name: "Melih Catal",
     age: 25,
     hobbies: ["coding", "sleeping"],
@@ -76,13 +77,13 @@ describe("Database Functions Testing", () => {
   });
 
   it("Test getting data by ID", async () => {
-    const existUserID = sampleUser._id;
+    const existUserID = sampleUser.sofifa_id;
     const absentUserID = 7;
     const collectionName = "players";
 
     await expect(
       server.getDataByID(collectionName, existUserID)
-    ).resolves.toMatchObject([sampleUser]);
+    ).resolves.toMatchObject(sampleUser);
 
     await expect(
       server.getDataByID(collectionName, absentUserID)
@@ -113,7 +114,7 @@ describe("Database Api Testing", () => {
   });
 
   it("Get Data By ID", async () => {
-    const existUserID = sampleUser._id;
+    const existUserID = sampleUser.sofifa_id;
     const absentUserID = 7;
     const user = [
       {
@@ -127,7 +128,7 @@ describe("Database Api Testing", () => {
     const absentCall = await request.get(`/getPlayer/${absentUserID}`);
 
     expect(existCall.status).toEqual(200);
-    expect(JSON.parse(existCall.text)).toMatchObject([sampleUser]);
+    expect(JSON.parse(existCall.text)).toMatchObject(sampleUser);
 
     expect(absentCall.status).toEqual(404);
     expect(absentCall.text).toContain("Not Found");

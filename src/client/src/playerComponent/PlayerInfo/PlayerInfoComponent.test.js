@@ -12,15 +12,20 @@ const playerInfo = {
 };
 
 test("Should render certain number of player info items and player identiy", () => {
-  const title = "Rating";
-  const value = "92";
-  const data = {
-    title: title,
-    value: value,
+  const playerData = {
+    age: "31",
+    club: "FC Bayern München",
+    overall: "82",
+    value: "16500000",
+    position: "CB",
+    preferredFoot: "Right",
+    workRate: "Medium/Medium",
+    bodyType: "Stocky",
   };
-  const response = [data, data, data, data, data];
+  const playerDataLength = Object.keys(playerData).length;
+
   const wrapper = mount(
-    <PlayerInfoComponent data={response} playerInfo={playerInfo} />
+    <PlayerInfoComponent playerData={playerData} playerInfo={playerInfo} />
   );
   const infoItems = wrapper.find("PlayerInfoItem");
   const identiyInfo = wrapper.find("PlayerIdentiy");
@@ -28,7 +33,7 @@ test("Should render certain number of player info items and player identiy", () 
   const warning = wrapper.find(".warning");
   expect(warning.length).toEqual(0);
   expect(identiyInfo.length).toEqual(1);
-  expect(infoItems.length).toEqual(response.length);
+  expect(infoItems.length).toEqual(playerDataLength);
 });
 
 test("Should warn about no data", () => {

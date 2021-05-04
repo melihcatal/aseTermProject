@@ -18,23 +18,32 @@ class PlayerComponent extends Component {
 
   async getPlayerData() {
     try {
+      console.log("anan ");
       const playerID = this.props.match.params.id;
-      const url = `/getPlayer/${playerID}`;
+      const url = `http://localhost:3001/getPlayer/${playerID}`;
       const results = await axios.get(url);
-      if (results.playerData.length > 0 && results.chartData.length > 0) {
+      console.log("result => " + JSON.stringify(results, null, 2));
+      const playerDataLength = Object.keys(results.data.playerData).length;
+      console.log("length => " + playerDataLength);
+      // if (playerDataLength > 0 && results.data.chartData.length > 0)
+      if (playerDataLength > 0) {
+        console.log("if");
         const resultDiv = (
           <div>
             <PlayerInfoComponent
-              data={results.playerData}
-              playerInfo={results.playerInfo}
+              playerData={results.data.playerData}
+              playerInfo={results.data.playerInfo}
             />
-            <PlayerCharts chartInfo={results.chartData} />
+            {/* <PlayerCharts chartInfo={results.data.chartData} /> */}
           </div>
         );
+
+        console.log("results div => " + resultDiv);
         this.setState({
           results: resultDiv,
         });
       } else {
+        console.log("else");
         throw "Error";
       }
     } catch (error) {

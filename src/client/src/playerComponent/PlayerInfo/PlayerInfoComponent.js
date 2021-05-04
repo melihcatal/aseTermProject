@@ -8,12 +8,22 @@ function PlayerInfoComponent(props) {
   const warning = <h4 className="warning">Error</h4>;
   useEffect(() => {
     try {
-      if (props.data.length > 0 && props.playerInfo != undefined) {
+      const playerDataLength = Object.keys(props.playerData).length;
+
+      if (playerDataLength > 0 && props.playerInfo != undefined) {
         let tempArray = [];
-        props.data.map((currentData) => {
+        // props.data.map((currentData) => {
+        //   const currentItem = <PlayerInfoItem data={currentData} />;
+        //   tempArray.push(currentItem);
+        // });
+
+        for (const [key, value] of Object.entries(props.playerData)) {
+          let currentData = {};
+          currentData[key] = value;
           const currentItem = <PlayerInfoItem data={currentData} />;
           tempArray.push(currentItem);
-        });
+        }
+
         const infoItems = (
           <div>
             <PlayerIdentiy playerInfo={props.playerInfo} />
