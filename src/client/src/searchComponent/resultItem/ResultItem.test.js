@@ -9,6 +9,7 @@ beforeEach(() => {
   player = {
     name: "Ronaldo",
     _id: 1,
+    playerID: 7,
     imageUrl:
       "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/101317.png",
     overall: 86,
@@ -35,7 +36,7 @@ describe("Search Result Item Testing", () => {
   });
 
   it("Testing Link", () => {
-    const link = wrapper.find("Link");
-    expect(link.props().to).toBe(`/players/${player._id}`);
+    const link = wrapper.find("a");
+    expect(link.props().href).toBe(`/players/${player.playerID}`);
   });
 });
