@@ -1,0 +1,20 @@
+#playerChartsDiv {
+  /* display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  overflow-x: scroll; */
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  padding: 1%;
+  grid-gap: 5%;
+  margin-left: 5%;
+}
+
+#playerChartsDiv div {
+  box-shadow: 0px 0px 10px 5px rgba(255, 0, 5, 0.1);
+  border-radius: 10%;
+  padding: 5%;
+}
