@@ -20,8 +20,10 @@ class PlayerComponent extends Component {
   async getPlayerData() {
     try {
       const playerID = this.props.match.params.id;
-      const url = `http://localhost:3001/getPlayer/${playerID}`;
+      const url = `/getPlayer/${playerID}`;
+
       const results = await axios.get(url);
+
       const playerDataLength = Object.keys(results.data.playerData).length;
       if (playerDataLength > 0 && results.data.chartData.length > 0) {
         const resultDiv = (

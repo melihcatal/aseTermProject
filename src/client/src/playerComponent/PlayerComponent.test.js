@@ -77,24 +77,26 @@ jest.mock("react-chartjs-2", () => ({
 }));
 
 describe("Player Component Test", () => {
-  it("deneme knk", async () => {
+  it("Player Component Test", async () => {
     const wrapper = mount(
       <PlayerComponent
         match={{ params: { id: 1 }, isExact: true, path: "", url: "" }}
       />
     );
     const resultDiv = (
-      <div>
+      <div id="playerComponentDiv">
         <PlayerInfoComponent
-          data={response.playerData}
+          playerData={response.playerData}
           playerInfo={response.playerInfo}
         />
         <PlayerCharts chartInfo={response.chartData} />
       </div>
     );
     expect(wrapper.state("results")).toBeNull;
-    axios.get.mockResolvedValue(response);
+    axios.get.mockResolvedValue({ data: response });
     await wrapper.instance().getPlayerData();
+    console.log("wrapper => " + wrapper.debug());
+
     expect(wrapper.state("results")).toStrictEqual(resultDiv);
 
     expect(axios.get).toHaveBeenCalledWith(`/getPlayer/1`);

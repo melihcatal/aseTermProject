@@ -9,12 +9,12 @@ function HeaderNavigation(props) {
     <div id="headerNavigation">
       <HeaderNavigationItem
         isPopup={false}
-        imageSource="./visuals/icons/ball.png"
+        imageSource="../visuals/icons/ball.png"
         title="Games"
       />
       <HeaderNavigationItem
         isPopup={true}
-        imageSource="./visuals/icons/compare.png"
+        imageSource="../visuals/icons/compare.png"
         title="Compare"
         isClicked={isClicked}
         setClicked={setClicked}

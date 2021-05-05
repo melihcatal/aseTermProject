@@ -17,7 +17,7 @@ class SearchComponent extends Component {
     try {
       if (searchText != "") {
         // const url = `http://${process.env.DATABASE_URL}/searchPlayer/${searchText}`;
-        const url = `http://localhost:3001/searchPlayer/${searchText}`;
+        const url = `/searchPlayer/${searchText}`;
         console.log("url => " + url);
         const results = await axios.get(url);
         this.setState({
@@ -42,7 +42,6 @@ class SearchComponent extends Component {
       }
     }
   }
-
   render() {
     return (
       <div id="searchDiv">

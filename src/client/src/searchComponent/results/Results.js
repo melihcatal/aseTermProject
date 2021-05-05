@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ResultItem from "../resultItem/ResultItem";
-var Validator = require("jsonschema").Validator;
 
 function Results(props) {
   const [warning, setWarning] = useState(null);
   const [resultItemsArray, setResultItems] = useState([]);
-  const schema = {
-    id: "/result",
-    type: "object",
-    properties: {
-      playerId: { type: "number" },
-      playerName: { type: "string" },
-      imageSource: { type: "string" },
-    },
-  };
-
-  const validator = new Validator();
 
   useEffect(() => {
     let tempArray = [];

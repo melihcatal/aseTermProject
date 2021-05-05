@@ -110,7 +110,6 @@ function getDataByID(collectionName, id) {
       const result = await database
         .collection(collectionName)
         .findOne(condition);
-
       if (result) {
         resolve(result);
       } else {
@@ -212,7 +211,7 @@ app.get("/getPlayer/:id", async (req, res) => {
           "Volleys",
           "Crossing",
           "Short Passing",
-          "Heading Accuracy",
+          "Heading ",
         ],
         datasets: [
           {
@@ -224,6 +223,7 @@ app.get("/getPlayer/:id", async (req, res) => {
               result.attacking_short_passing,
               result.attacking_heading_accuracy,
             ],
+            backgroundColor: "rgba(255, 0, 0, 0.5)",
           },
         ],
       };
@@ -236,7 +236,20 @@ app.get("/getPlayer/:id", async (req, res) => {
       const response = {
         playerData: playerData,
         playerInfo: playerInfo,
-        chartData: [chartInfo, chartInfo],
+        chartData: [
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+        ],
       };
 
       res.status(200).send(response);

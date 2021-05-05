@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CustomChart from "../../chartComponent/CustomChart";
+import "./PlayerChartsStyle.css";
 
 function PlayerCharts(props) {
   const [chartItems, setChartItems] = useState([]);
@@ -23,7 +24,7 @@ function PlayerCharts(props) {
     }
   }, []);
 
-  return <div>{isWarning ? warning : chartItems}</div>;
+  return <div id="playerChartsDiv">{isWarning ? warning : chartItems}</div>;
 }
 
 export default PlayerCharts;
