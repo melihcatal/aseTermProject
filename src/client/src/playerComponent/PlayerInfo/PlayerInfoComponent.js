@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from "react";
+import PlayerIdentiy from "./PlayerIdentiy/PlayerIdentiy";
 import PlayerInfoItem from "./PlayerInfoItem/PlayerInfoItem";
+import "./PlayerInfoComponentStyle.css";
 
 function PlayerInfoComponent(props) {
-  const [infoItems, setInfoItems] = useState([]);
+  const [infoItems, setInfoItems] = useState(null);
   const [isWarning, setWarning] = useState(false);
-  const warning = <h4>Error</h4>;
+  const warning = <h4 className="warning">Error</h4>;
   useEffect(() => {
     try {
-      if (props.data.length > 0) {
+      const playerDataLength = Object.keys(props.playerData).length;
+
+      if (playerDataLength > 0 && props.playerInfo != undefined) {
         let tempArray = [];
-        props.data.map((currentData) => {
+        // props.data.map((currentData) => {
+        //   const currentItem = <PlayerInfoItem data={currentData} />;
+        //   tempArray.push(currentItem);
+        // });
+
+        for (const [key, value] of Object.entries(props.playerData)) {
+          let currentData = {};
+          currentData[key] = value;
           const currentItem = <PlayerInfoItem data={currentData} />;
           tempArray.push(currentItem);
-        });
-        setInfoItems(tempArray);
+        }
+
+        const infoItems = (
+          <div id="playerInfo">
+            <PlayerIdentiy playerInfo={props.playerInfo} />
+            {tempArray}
+          </div>
+        );
+        setInfoItems(infoItems);
       } else {
         throw "Error";
       }
@@ -21,7 +39,7 @@ function PlayerInfoComponent(props) {
       setWarning(true);
     }
   }, []);
-  return <div>{isWarning ? warning : infoItems}</div>;
+  return isWarning ? warning : infoItems;
 }
 
 export default PlayerInfoComponent;

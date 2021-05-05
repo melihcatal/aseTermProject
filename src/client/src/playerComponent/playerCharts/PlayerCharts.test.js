@@ -1,6 +1,10 @@
 import { mount } from "enzyme";
 import PlayerCharts from "./PlayerCharts";
-
+jest.mock("react-chartjs-2", () => ({
+  Bar: () => null, // add any additional chart types here
+  Line: () => null,
+  Radar: () => null,
+}));
 test("Should render certain number of charts", () => {
   const data = {
     labels: [
@@ -45,7 +49,6 @@ test("Should render certain number of charts", () => {
 
   const response = [chartInfo, chartInfo, chartInfo, chartInfo];
   const wrapper = mount(<PlayerCharts chartInfo={response} />);
-  console.log("wrapper => " + wrapper.debug());
   const charts = wrapper.find("CustomChart");
   expect(charts.length).toEqual(response.length);
 });

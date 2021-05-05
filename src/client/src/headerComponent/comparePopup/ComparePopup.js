@@ -6,11 +6,11 @@ function ComparePopup(props) {
   return (
     <div id="comparePopupDiv">
       <ComparePopupItem
-        imageSource="./visuals/icons/football-club.png"
+        imageSource="../visuals/icons/football-club.png"
         title="Clubs"
       />
       <ComparePopupItem
-        imageSource="./visuals/icons/tshirt.png"
+        imageSource="../visuals/icons/tshirt.png"
         title="Players"
       />
     </div>

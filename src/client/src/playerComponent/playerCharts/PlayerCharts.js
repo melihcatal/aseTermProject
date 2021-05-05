@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import CustomChart from "../../chartComponent/CustomChart";
+import "./PlayerChartsStyle.css";
 
 function PlayerCharts(props) {
   const [chartItems, setChartItems] = useState([]);
   const [isWarning, setWarning] = useState(false);
   const warning = <h4>Error</h4>;
+
   useEffect(() => {
     try {
       if (props.chartInfo.length > 0) {
         let tempArray = [];
-        props.chartInfo.map((currentInfo) => {
-          const currentChart = (
-            <CustomChart data={currentInfo.data} type={currentInfo.type} />
-          );
+        props.chartInfo.map((chartInfo) => {
+          const currentChart = <CustomChart chartInfo={chartInfo} />;
           tempArray.push(currentChart);
         });
         setChartItems(tempArray);
@@ -24,7 +24,7 @@ function PlayerCharts(props) {
     }
   }, []);
 
-  return <div>{isWarning ? warning : chartItems}</div>;
+  return <div id="playerChartsDiv">{isWarning ? warning : chartItems}</div>;
 }
 
 export default PlayerCharts;

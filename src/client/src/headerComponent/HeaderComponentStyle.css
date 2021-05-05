@@ -1,7 +1,6 @@
 #headerDiv {
   display: inline-flex;
   width: 100%;
-  position: absolute;
   align-items: center;
   justify-content: center;
   border-bottom-style: solid;

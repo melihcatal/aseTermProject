@@ -1,5 +1,7 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectID;
+
 require("dotenv").config({
   path: "../../.env",
 });
@@ -102,20 +104,19 @@ function getDataByID(collectionName, id) {
     try {
       const database = await connectDatabase(process.env.MONGO_DATABASE);
       const condition = {
-        _id: id,
+        _id: ObjectId(id),
       };
 
       const result = await database
         .collection(collectionName)
-        .find(condition)
-        .toArray();
-
-      if (result.length > 0) {
+        .findOne(condition);
+      if (result) {
         resolve(result);
       } else {
         resolve("Not Found");
       }
     } catch (error) {
+      console.log("error => " + error);
       reject("Error");
     }
   });
@@ -143,6 +144,7 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
     const limit = 5;
     const group = {
       _id: "$sofifa_id",
+      playerID: { $last: "$_id" },
       name: { $last: "$long_name" },
       year: { $max: "$year" },
 
@@ -187,7 +189,70 @@ app.get("/getPlayer/:id", async (req, res) => {
     const result = await getDataByID(collectionName, id);
 
     if (result != "Not Found") {
-      res.status(200).send(result);
+      const playerData = {
+        age: result.age,
+        club: result.club,
+        overall: result.overall,
+        value: result.value_eur,
+        position: result.player_positions,
+        preferredFoot: result.preferred_foot,
+        workRate: result.work_rate,
+        bodyType: result.body_type,
+      };
+      const playerInfo = {
+        name: result.long_name,
+        nationality: result.nationality,
+        imageUrl: result.imageUrl,
+      };
+
+      const chartData = {
+        labels: [
+          "Finishing",
+          "Volleys",
+          "Crossing",
+          "Short Passing",
+          "Heading ",
+        ],
+        datasets: [
+          {
+            label: "Attacking",
+            data: [
+              result.attacking_finishing,
+              result.attacking_volleys,
+              result.attacking_crossing,
+              result.attacking_short_passing,
+              result.attacking_heading_accuracy,
+            ],
+            backgroundColor: "rgba(255, 0, 0, 0.5)",
+          },
+        ],
+      };
+
+      const chartInfo = {
+        data: chartData,
+        type: "radar",
+      };
+
+      const response = {
+        playerData: playerData,
+        playerInfo: playerInfo,
+        chartData: [
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+        ],
+      };
+
+      res.status(200).send(response);
     } else {
       res.status(404).send("Not Found");
     }
