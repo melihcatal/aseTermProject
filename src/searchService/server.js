@@ -99,29 +99,6 @@ function getData(
   });
 }
 
-function getDataByID(collectionName, id) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const database = await connectDatabase(process.env.MONGO_DATABASE);
-      const condition = {
-        _id: ObjectId(id),
-      };
-
-      const result = await database
-        .collection(collectionName)
-        .findOne(condition);
-      if (result) {
-        resolve(result);
-      } else {
-        resolve("Not Found");
-      }
-    } catch (error) {
-      console.log("error => " + error);
-      reject("Error");
-    }
-  });
-}
-
 function textRegex(text) {
   const textArray = text.split(" ");
 
@@ -182,10 +159,12 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
   }
 });
 
+app.get("/anan", (req, res) => {
+  res.send("anan");
+});
 module.exports = {
   app: app,
   databaseExist: databaseExist,
   connectDatabase: connectDatabase,
   getData: getData,
-  getDataByID: getDataByID,
 };

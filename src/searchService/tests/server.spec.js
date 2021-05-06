@@ -69,21 +69,6 @@ describe("Database Functions Testing", () => {
 
     done();
   });
-
-  it("Test getting data by ID", async () => {
-    //  console.log("samlpe >=>" + JSON.stringify(sampleUser, null, 2));
-    const existUserID = "607ea2cdbc610f0750e2a85d";
-    const absentUserID = 7;
-    const collectionName = "players";
-
-    await expect(
-      server.getDataByID(collectionName, existUserID)
-    ).resolves.toMatchObject(sampleUser);
-
-    await expect(
-      server.getDataByID(collectionName, absentUserID)
-    ).resolves.toContain("Not Found");
-  });
 });
 
 describe("Database Api Testing", () => {
@@ -107,25 +92,4 @@ describe("Database Api Testing", () => {
       (await request.get(`/searchPlayer/${absentPlayerName}`)).status
     ).toEqual(404);
   });
-
-  // it("Get Data By ID", async () => {
-  //   const existUserID = -1;
-  //   const absentUserID = 7;
-  //   const user = [
-  //     {
-  //       _id: -1,
-  //       name: "Melih Catal",
-  //       age: 25,
-  //       hobbies: ["coding", "sleeping"],
-  //     },
-  //   ];
-  //   const existCall = await request.get(`/getPlayer/${existUserID}`);
-  //   const absentCall = await request.get(`/getPlayer/${absentUserID}`);
-
-  //   expect(existCall.status).toEqual(200);
-  //   expect(JSON.parse(existCall.text)).toMatchObject(sampleUser);
-
-  //   expect(absentCall.status).toEqual(404);
-  //   expect(absentCall.text).toContain("Not Found");
-  // });
 });
