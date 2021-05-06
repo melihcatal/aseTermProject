@@ -1,14 +1,15 @@
 const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
+
+const app = express();
+app.use(cors());
 
 require("dotenv").config({
   path: "../../.env",
 });
-const cors = require("cors");
-
-const app = express();
-app.use(cors());
 
 function databaseExist(databaseName) {
   return new Promise(async (resolve, reject) => {
@@ -60,45 +61,6 @@ function connectDatabase(databaseName) {
   });
 }
 
-function getData(
-  collectionName,
-  sortField,
-  sortBy,
-  limit,
-  condition,
-  projection = null,
-  group = null
-) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const database = await connectDatabase(process.env.MONGO_DATABASE);
-
-      const aggregation = [
-        { $match: condition },
-        ...(group ? [{ $group: group }] : []),
-        ...(projection ? [{ $project: projection }] : []),
-        { $sort: { [sortField]: sortBy } },
-        ...(limit ? [{ $limit: limit }] : []),
-      ];
-
-      const result = await database
-        .collection(collectionName)
-        .aggregate(aggregation, {
-          allowDiskUse: true,
-        })
-        .toArray();
-
-      if (result.length > 0) {
-        resolve(result);
-      } else {
-        resolve("Not Found");
-      }
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
 function getDataByID(collectionName, id) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -122,63 +84,81 @@ function getDataByID(collectionName, id) {
   });
 }
 
-function textRegex(text) {
-  const textArray = text.split(" ");
-
-  let regexArray = [];
-
-  //create regex array for each word
-  textArray.map((currentText) => {
-    regexArray.push(new RegExp(currentText, "i"));
-  });
-
-  return regexArray;
-}
-
-app.get("/searchPlayer/:playerName", async (req, res) => {
+app.get("/getPlayer/:id", async (req, res) => {
   try {
-    const playerName = req.params.playerName;
     const collectionName = "players";
-    const sortField = "overall";
-    const sortBy = -1;
-    const limit = 5;
-    const group = {
-      _id: "$sofifa_id",
-      playerID: { $last: "$_id" },
-      name: { $last: "$long_name" },
-      year: { $max: "$year" },
+    const id = req.params.id;
+    const result = await getDataByID(collectionName, id);
+    if (result != "Not Found") {
+      const playerData = {
+        age: result.age,
+        club: result.club,
+        overall: result.overall,
+        value: result.value_eur,
+        position: result.player_positions,
+        preferredFoot: result.preferred_foot,
+        workRate: result.work_rate,
+        bodyType: result.body_type,
+      };
+      const playerInfo = {
+        name: result.long_name,
+        nationality: result.nationality,
+        imageUrl: result.imageUrl,
+      };
 
-      overall: { $max: "$overall" },
-      imageUrl: { $last: "$imageUrl" },
-    };
-    const projection = null;
+      const chartData = {
+        labels: [
+          "Finishing",
+          "Volleys",
+          "Crossing",
+          "Short Passing",
+          "Heading ",
+        ],
+        datasets: [
+          {
+            label: "Attacking",
+            data: [
+              result.attacking_finishing,
+              result.attacking_volleys,
+              result.attacking_crossing,
+              result.attacking_short_passing,
+              result.attacking_heading_accuracy,
+            ],
+            backgroundColor: "rgba(255, 0, 0, 0.5)",
+          },
+        ],
+      };
 
-    const regexArray = textRegex(playerName);
+      const chartInfo = {
+        data: chartData,
+        type: "radar",
+      };
 
-    //prettier-ignore
-    const condition = {
-      long_name: {
-        $all: regexArray,
-      },
-    };
+      const response = {
+        playerData: playerData,
+        playerInfo: playerInfo,
+        chartData: [
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+          chartInfo,
+        ],
+      };
 
-    const searchResult = await getData(
-      collectionName,
-      sortField,
-      sortBy,
-      limit,
-      condition,
-      projection,
-      group
-    );
-
-    if (searchResult != "Not Found") {
-      res.status(200).send(searchResult);
+      res.status(200).send(response);
     } else {
       res.status(404).send("Not Found");
     }
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send("Error");
   }
 });
 
@@ -186,6 +166,5 @@ module.exports = {
   app: app,
   databaseExist: databaseExist,
   connectDatabase: connectDatabase,
-  getData: getData,
   getDataByID: getDataByID,
 };
