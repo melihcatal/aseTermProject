@@ -159,9 +159,43 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
   }
 });
 
-app.get("/anan", (req, res) => {
-  res.send("anan");
+app.get("/searchTeam/:teamName", async (req, res) => {
+  try {
+    const teamName = req.params.teamName;
+    const collectionName = "teams";
+    const sortField = "team";
+    const sortBy = 1;
+    const limit = 5;
+    const regexArray = textRegex(teamName);
+    //prettier-ignore
+    const condition = {
+      team: {
+        $all: regexArray,
+      },
+    };
+
+    const projection = {
+      team: 1,
+      _id: 0,
+    };
+    const searchResult = await getData(
+      collectionName,
+      sortField,
+      sortBy,
+      limit,
+      condition,
+      projection
+    );
+    if (searchResult != "Not Found") {
+      res.status(200).send(searchResult);
+    } else {
+      res.status(404).send("Not Found");
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
+
 module.exports = {
   app: app,
   databaseExist: databaseExist,

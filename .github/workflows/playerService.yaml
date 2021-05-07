@@ -1,4 +1,4 @@
-name: database
+name: playerService
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ,develop]
 
 env:
-  IMAGE_NAME: 'melihcatal/database'
+  IMAGE_NAME: 'melihcatal/playerService'
   MONGOMS_ARCH: x64
   MONGO_DATABASE: 'fifa'
 
@@ -17,7 +17,7 @@ jobs:
   test:
     defaults:
       run:
-        working-directory: ./src/database
+        working-directory: ./src/playerService
 
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +46,7 @@ jobs:
           image: ${{env.IMAGE_NAME}}
           registry: docker.io
           tags: latest
-          directory: ./src/database
-          dockerfile: ./src/database/Dockerfile
+          directory: ./src/playerService
+          dockerfile: ./src/playerService/Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}

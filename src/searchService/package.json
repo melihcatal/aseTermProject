@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "LANG='en_US.UTF-8' jest --detectOpenHandles"
+    "test": "LANG='en_US.UTF-8' jest --detectOpenHandles --coverage"
   },
   "keywords": [],
   "author": "",
