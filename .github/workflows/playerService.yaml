@@ -7,7 +7,7 @@ on:
     branches: [ main ,develop]
 
 env:
-  IMAGE_NAME: 'melihcatal/playerService'
+  IMAGE_NAME: 'melihcatal/playerservice'
   MONGOMS_ARCH: x64
   MONGO_DATABASE: 'fifa'
 
