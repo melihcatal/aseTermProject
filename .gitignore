@@ -2,3 +2,4 @@ node_modules
 test.sh
 template.yml
 .env
+coverage
