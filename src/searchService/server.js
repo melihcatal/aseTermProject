@@ -99,29 +99,6 @@ function getData(
   });
 }
 
-function getDataByID(collectionName, id) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const database = await connectDatabase(process.env.MONGO_DATABASE);
-      const condition = {
-        _id: ObjectId(id),
-      };
-
-      const result = await database
-        .collection(collectionName)
-        .findOne(condition);
-      if (result) {
-        resolve(result);
-      } else {
-        resolve("Not Found");
-      }
-    } catch (error) {
-      console.log("error => " + error);
-      reject("Error");
-    }
-  });
-}
-
 function textRegex(text) {
   const textArray = text.split(" ");
 
@@ -182,82 +159,40 @@ app.get("/searchPlayer/:playerName", async (req, res) => {
   }
 });
 
-app.get("/getPlayer/:id", async (req, res) => {
+app.get("/searchTeam/:teamName", async (req, res) => {
   try {
-    const collectionName = "players";
-    const id = req.params.id;
-    const result = await getDataByID(collectionName, id);
+    const teamName = req.params.teamName;
+    const collectionName = "teams";
+    const sortField = "team";
+    const sortBy = 1;
+    const limit = 5;
+    const regexArray = textRegex(teamName);
+    //prettier-ignore
+    const condition = {
+      team: {
+        $all: regexArray,
+      },
+    };
 
-    if (result != "Not Found") {
-      const playerData = {
-        age: result.age,
-        club: result.club,
-        overall: result.overall,
-        value: result.value_eur,
-        position: result.player_positions,
-        preferredFoot: result.preferred_foot,
-        workRate: result.work_rate,
-        bodyType: result.body_type,
-      };
-      const playerInfo = {
-        name: result.long_name,
-        nationality: result.nationality,
-        imageUrl: result.imageUrl,
-      };
-
-      const chartData = {
-        labels: [
-          "Finishing",
-          "Volleys",
-          "Crossing",
-          "Short Passing",
-          "Heading ",
-        ],
-        datasets: [
-          {
-            label: "Attacking",
-            data: [
-              result.attacking_finishing,
-              result.attacking_volleys,
-              result.attacking_crossing,
-              result.attacking_short_passing,
-              result.attacking_heading_accuracy,
-            ],
-            backgroundColor: "rgba(255, 0, 0, 0.5)",
-          },
-        ],
-      };
-
-      const chartInfo = {
-        data: chartData,
-        type: "radar",
-      };
-
-      const response = {
-        playerData: playerData,
-        playerInfo: playerInfo,
-        chartData: [
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-        ],
-      };
-
-      res.status(200).send(response);
+    const projection = {
+      team: 1,
+      _id: 0,
+    };
+    const searchResult = await getData(
+      collectionName,
+      sortField,
+      sortBy,
+      limit,
+      condition,
+      projection
+    );
+    if (searchResult != "Not Found") {
+      res.status(200).send(searchResult);
     } else {
       res.status(404).send("Not Found");
     }
   } catch (error) {
-    res.status(500).send("Error");
+    res.status(500).send(error);
   }
 });
 
@@ -266,5 +201,4 @@ module.exports = {
   databaseExist: databaseExist,
   connectDatabase: connectDatabase,
   getData: getData,
-  getDataByID: getDataByID,
 };
