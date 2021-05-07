@@ -1,0 +1,14 @@
+#headerNavigationItem {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding-top: 1%;
+  cursor: pointer;
+}
+#headerNavigationItem img {
+  width: 35%;
+  display: inline-block;
+}
+#headerNavigationItem h5 {
+  margin-top: -1%;
+}

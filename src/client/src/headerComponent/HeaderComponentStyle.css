@@ -1,0 +1,9 @@
+#headerDiv {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-bottom-style: solid;
+  border-bottom-width: 0.1px;
+  border-bottom-color: antiquewhite;
+}

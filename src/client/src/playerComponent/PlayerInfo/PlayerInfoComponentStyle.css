@@ -1,0 +1,17 @@
+#playerInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#playerIdentityDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+}
+#playerIdentityDiv div {
+  text-align: left;
+  margin-left: 5%;
+}
