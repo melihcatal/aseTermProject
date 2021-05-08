@@ -13,18 +13,18 @@ services:
   #   depends_on: 
   #     - searchservice  
   #     - playerservice
-  # searchservice:
-  #   build: 
-  #     context: src/searchService
-  #     dockerfile: ./Dockerfile
-  #   image: melihcatal/searchservice
-  #   environment:
-  #     MONGO_IP : ${MONGO_IP}
-  #     MONGO_DATABASE : ${MONGO_DATABASE}
-  #   ports: 
-  #     - 3001:3000
-  #   depends_on: 
-  #     - mongo
+  searchservice:
+    build: 
+      context: src/searchService
+      dockerfile: ./Dockerfile
+    image: melihcatal/searchservice
+    environment:
+      MONGO_IP : ${MONGO_IP}
+      MONGO_DATABASE : ${MONGO_DATABASE}
+    ports: 
+      - 3001:3000
+    depends_on: 
+      - mongo
   # playerservice:
   #   build: 
   #     context: src/playerService
@@ -52,7 +52,7 @@ services:
     depends_on:
       # - client
       # - playerservice
-      # - searchservice
+      - searchservice
       - mongo      
 volumes:
   mongo-data:

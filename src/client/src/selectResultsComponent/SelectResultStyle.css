@@ -1,0 +1,32 @@
+#selectResultsDiv {
+  display: block;
+  overflow-y: scroll;
+}
+
+#selectResultItemDiv {
+  margin: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-style: none;
+  box-shadow: 0px 0px 10px 5px rgba(255, 0, 5, 0.1);
+  border-radius: 20px;
+}
+
+.selectResultChildDiv {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  padding: 1%;
+}
+#selectResultClub img {
+  width: 25%;
+  margin-right: 5%;
+}
+
+#selectResultLeague img {
+  width: 10%;
+  margin-right: 5%;
+}

@@ -1,0 +1,14 @@
+#compareSelectItem {
+  width: 30%;
+  display: block;
+  cursor: pointer;
+  padding: 2%;
+  margin: 1%;
+  text-align: center;
+  font-size: large;
+  color: aliceblue;
+}
+
+#compareSelectItem img {
+  width: 40%;
+}

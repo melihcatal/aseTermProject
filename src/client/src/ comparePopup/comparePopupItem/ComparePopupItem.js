@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import "./ComparePopupItemStyle.css";
 
 function ComparePopupItem(props) {
+  const hrefLink = props.title == "Clubs" ? "selectTeams" : "selectPlayers";
   return (
-    <Link to={`/compare/${props.title}`} id="comparePopupItemDiv">
+    <a href={hrefLink} id="comparePopupItemDiv">
       <img src={props.imageSource} />
       <h3>{props.title}</h3>
-    </Link>
+    </a>
   );
 }
 

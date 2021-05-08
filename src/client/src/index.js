@@ -5,6 +5,7 @@ import App from "./App";
 import HeaderComponent from "./headerComponent/HeaderComponent";
 import history from "./history";
 import PlayerComponent from "./playerComponent/PlayerComponent";
+import SelectTeamComponent from "./selectTeamComponent/SelectTeamComponent";
 
 ReactDOM.render(
   <BrowserRouter history={history}>
@@ -12,6 +13,7 @@ ReactDOM.render(
     <Switch>
       <Route path="/" exact component={App}></Route>
       <Route path="/players/:id" exact component={PlayerComponent}></Route>
+      <Route path="/selectTeams" exact component={SelectTeamComponent}></Route>
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
