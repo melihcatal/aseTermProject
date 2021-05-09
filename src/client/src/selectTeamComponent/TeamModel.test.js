@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import TeamModel from "./TeamModel";
 describe("Model Testing", () => {
   it("should call close function on click button ", () => {

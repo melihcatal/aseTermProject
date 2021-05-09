@@ -16,8 +16,9 @@ function SelectResults(props) {
           const currentItem = (
             <SelectResultItem
               key={result._id}
-              club={result}
+              data={result}
               itemSelected={props.itemSelected}
+              isTeam={props.isTeam}
             />
           );
           tempArray.push(currentItem);

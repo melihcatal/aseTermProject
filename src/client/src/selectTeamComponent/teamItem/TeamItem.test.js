@@ -12,6 +12,7 @@ describe("Team Item Test", () => {
         setClicked={setClicked}
         setTurn={setTurn}
         isSelected={isSelected}
+        isTeam={true}
       />
     );
 
@@ -34,6 +35,7 @@ describe("Team Item Test", () => {
         isSelected={isSelected}
         imageSource={imageSource}
         name={name}
+        isTeam={true}
       />
     );
 

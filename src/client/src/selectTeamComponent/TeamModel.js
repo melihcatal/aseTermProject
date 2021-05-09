@@ -8,8 +8,9 @@ import "./ModalStyle.css";
 Modal.setAppElement(document.getElementById("anan"));
 
 function TeamModel(props) {
-  async function getTeamData(searchText) {
-    const url = `http://localhost:3001/searchTeam/${searchText}`;
+  async function getData(searchText) {
+    const endPoint = props.isTeam ? "searchTeam" : "searchPlayer";
+    const url = `http://localhost:3001/${endPoint}/${searchText}`;
     try {
       if (searchText != "") {
         const result = await axios.get(url);
@@ -28,9 +29,9 @@ function TeamModel(props) {
     }
   }
 
-  function itemSelected(id, clubLogo, clubName) {
-    props.setLogo(clubLogo);
-    props.setName(clubName);
+  function itemSelected(id, image, name) {
+    props.setImage(image);
+    props.setName(name);
     props.closeModel(false);
   }
 
@@ -45,10 +46,17 @@ function TeamModel(props) {
       >
         X
       </button>
-      <h2>Search Team</h2>
-      <SearchBar getData={getTeamData} placeholder="Search Team" />
+      <h2>{props.title}</h2>
+      <SearchBar
+        getData={getData}
+        placeholder={props.isTeam ? "Search Teeam" : "Search Player"}
+      />
       {results != null && (
-        <SelectResults results={results} itemSelected={itemSelected} />
+        <SelectResults
+          results={results}
+          itemSelected={itemSelected}
+          isTeam={props.isTeam}
+        />
       )}
     </Modal>
   );

@@ -10,7 +10,7 @@ describe("Select Result Item", () => {
       countryFlag: "country.png",
       leagueName: "league 1",
     };
-    const wrapper = shallow(<SelectResultItem club={club} />);
+    const wrapper = shallow(<SelectResultItem data={club} isTeam={true} />);
     const div = wrapper.find(".selectResultChildDiv");
     const img = wrapper.find("img");
     const clubName = wrapper.find("h3");
@@ -36,7 +36,7 @@ describe("Select Result Item", () => {
     });
 
     const wrapper = shallow(
-      <SelectResultItem itemSelected={itemSelected} club={club} />
+      <SelectResultItem itemSelected={itemSelected} data={club} isTeam={true} />
     );
 
     const div = wrapper.find("#selectResultItemDiv");
