@@ -1,12 +1,12 @@
 import React from "react";
 
 function SearchBar(props) {
-  const placeholder = "Search Player";
+  const placeholder = props.placeholder || "Search";
   return (
     <input
       type="text"
       onChange={(event) => {
-        props.getPlayerData(event.target.value);
+        props.getData(event.target.value);
       }}
       placeholder={placeholder}
     />

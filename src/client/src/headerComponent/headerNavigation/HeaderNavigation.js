@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./HeaderNavigationStyle.css";
 import HeaderNavigationItem from "./headerNavigationItem/HeaderNavigationItem";
-import ComparePopup from "../comparePopup/ComparePopup";
+import ComparePopup from "../../ comparePopup/ComparePopup";
 
 function HeaderNavigation(props) {
   const [isClicked, setClicked] = useState(false);

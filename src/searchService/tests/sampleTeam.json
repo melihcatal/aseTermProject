@@ -1,4 +1,8 @@
 {
-    "_id":"61",
-    "team" : "Trabzonspor"
- }
+    "_id": "6095a9cb97f67c0508bb276a",
+    "clubName": "Trabzonspor",
+    "leagueName": "Turkish Süper Lig",
+    "countryName": "Turkey",
+    "clubLogo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Trabzonspor.png",
+    "countryFlag": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/Turkey.png"
+}

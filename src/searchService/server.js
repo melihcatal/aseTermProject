@@ -163,13 +163,13 @@ app.get("/searchTeam/:teamName", async (req, res) => {
   try {
     const teamName = req.params.teamName;
     const collectionName = "teams";
-    const sortField = "team";
+    const sortField = "clubName";
     const sortBy = 1;
     const limit = 5;
     const regexArray = textRegex(teamName);
     //prettier-ignore
     const condition = {
-      team: {
+      clubName: {
         $all: regexArray,
       },
     };
@@ -183,8 +183,7 @@ app.get("/searchTeam/:teamName", async (req, res) => {
       sortField,
       sortBy,
       limit,
-      condition,
-      projection
+      condition
     );
     if (searchResult != "Not Found") {
       res.status(200).send(searchResult);
