@@ -97,7 +97,7 @@ describe("Database Api Testing", () => {
   });
 
   it("Search Team", async () => {
-    const fullName = sampleTeam.team;
+    const fullName = sampleTeam.clubName;
     const partialName = "Tr";
     const partialNames = "Tr spo";
     const absentPlayerName = "Simge";

@@ -45,7 +45,7 @@ class SearchComponent extends Component {
   render() {
     return (
       <div id="searchDiv">
-        <SearchBar getPlayerData={this.getPlayerData} />
+        <SearchBar getData={this.getPlayerData} />
         {this.state.results != null && <Results results={this.state.results} />}
       </div>
     );
