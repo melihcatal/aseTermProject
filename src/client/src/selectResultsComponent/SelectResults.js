@@ -24,10 +24,10 @@ function SelectResults(props) {
         });
         setResultItems(tempArray);
       } else {
-        throw "Not Found";
+        setWarning("Not Found");
       }
     } catch (error) {
-      setWarning(error);
+      setWarning("Error");
     }
   }, [props.results]);
 
