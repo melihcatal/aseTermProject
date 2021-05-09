@@ -2,7 +2,14 @@ import React from "react";
 import "./TeamItemStyle.css";
 
 function TeamItem(props) {
-  const imageSource = "../visuals/icons/football-club.png";
+  const teamImageSource = "../visuals/icons/football-club.png";
+  const playerImageSource = "../visuals/icons/tshirt.png";
+  const image = props.isTeam ? (
+    <img src={!props.isSelected ? teamImageSource : props.imageSource} />
+  ) : (
+    <img src={!props.isSelected ? playerImageSource : props.imageSource} />
+  );
+
   return (
     <div
       onClick={() => {
@@ -11,7 +18,7 @@ function TeamItem(props) {
       }}
       id={"compareSelectItem"}
     >
-      <img src={!props.isSelected ? imageSource : props.imageSource} />
+      {image}
       {props.isSelected && <h4>{props.name}</h4>}
     </div>
   );

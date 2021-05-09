@@ -4,22 +4,31 @@ function SelectResultItem(props) {
   return (
     <div
       onClick={() => {
-        props.itemSelected(
-          props.club._id,
-          props.club.clubLogo,
-          props.club.clubName
-        );
+        props.isTeam
+          ? props.itemSelected(
+              props.data._id,
+              props.data.clubLogo,
+              props.data.clubName
+            )
+          : props.itemSelected(
+              props.data.playerID,
+              props.data.imageUrl,
+              props.data.name
+            );
       }}
       id={"selectResultItemDiv"}
     >
       <div className="selectResultChildDiv" id="selectResultClub">
-        <img src={props.club.clubLogo} />
-        <h3>{props.club.clubName}</h3>
+        <img src={props.data.clubLogo || props.data.imageUrl} />
+        <h3>{props.data.clubName || props.data.name}</h3>
       </div>
-      <div className="selectResultChildDiv" id="selectResultLeague">
-        <img src={props.club.countryFlag} />
-        <h4>{props.club.leagueName}</h4>
-      </div>
+
+      {props.isTeam && (
+        <div className="selectResultChildDiv" id="selectResultLeague">
+          <img src={props.data.countryFlag} />
+          <h4>{props.data.leagueName}</h4>
+        </div>
+      )}
     </div>
   );
 }

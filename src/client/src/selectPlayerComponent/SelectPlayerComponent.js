@@ -23,6 +23,7 @@ function SelectPlayerComponent(props) {
         name={team1Name ? team1Name : {}}
         setTurn={setTurn}
         turn="1"
+        isTeam={false}
       />
 
       <TeamItem
@@ -33,12 +34,15 @@ function SelectPlayerComponent(props) {
         name={team2Name ? team2Name : {}}
         setTurn={setTurn}
         turn="2"
+        isTeam={false}
       />
       <TeamModel
         isOpen={isClicked}
-        setLogo={turn == "1" ? setTeam1Image : setTeam2Image}
+        setImage={turn == "1" ? setTeam1Image : setTeam2Image}
         closeModel={setClicked}
         setName={turn == "1" ? setTeam1Name : setTeam2Name}
+        title={"Search Player"}
+        isTeam={false}
       />
 
       <button>Compare</button>
