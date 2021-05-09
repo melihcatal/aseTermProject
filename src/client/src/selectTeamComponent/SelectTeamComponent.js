@@ -14,9 +14,6 @@ function SelectTeamComponent(props) {
   const [isClicked, setClicked] = useState(false);
   const [turn, setTurn] = useState(null);
 
-  console.log("team1Image => " + team1Image);
-  console.log("team2Image => " + team2Image);
-
   return (
     <div id={"selectTeamDiv"}>
       <TeamItem
