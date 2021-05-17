@@ -1,13 +1,11 @@
 import { mount, shallow } from "enzyme";
 import PositionItem from "./PositionItem";
-require("dotenv").config({
-  path: "../../.env",
-});
+
 test("Should render given position name and color with calculated background color", () => {
   const position = "ST";
   const score = "80";
   const expectedBackground = `rgb(235,${Math.floor(
-    score * process.env.FIELD_BACK_COEF
+    score * process.env.REACT_APP_FIELD_BACK_COEF
   )},52)`;
   const info = {
     position: position,
