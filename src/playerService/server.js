@@ -46,8 +46,8 @@ function connectDatabase(databaseName) {
     try {
       const isDatabase = await databaseExist(databaseName);
       if (isDatabase) {
-        //const databaseUrl = `mongodb://${process.env.MONGO_IP}/${databaseName}`;
-        const databaseUrl = `mongodb://localhost:27017/${databaseName}`;
+        const databaseUrl = `mongodb://${process.env.MONGO_IP}/${databaseName}`;
+        //const databaseUrl = `mongodb://localhost:27017/${databaseName}`;
 
         const connection = await MongoClient.connect(databaseUrl, {
           useNewUrlParser: true,
