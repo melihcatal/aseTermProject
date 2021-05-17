@@ -20,7 +20,7 @@ class PlayerComponent extends Component {
   async getPlayerData() {
     try {
       const playerID = this.props.match.params.id;
-      const url = `/getPlayer/${playerID}`;
+      const url = `http://localhost:3002/getPlayer/${playerID}`;
 
       const results = await axios.get(url);
 
