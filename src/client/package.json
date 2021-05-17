@@ -7,6 +7,7 @@
         "@testing-library/user-event": "^12.8.3",
         "axios": "^0.21.1",
         "chart.js": "^3.2.1",
+        "dotenv": "^8.2.0",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.6",
         "jsonschema": "^1.4.0",
@@ -22,7 +23,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "CI=false react-scripts test -u --silent --colors --coverage ",
+        "test": "CI=false react-scripts test -u --silent --colors  ",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

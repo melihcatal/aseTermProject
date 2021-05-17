@@ -1,0 +1,14 @@
+#fieldComponentDiv {
+  background-image: url("https://image.freepik.com/free-vector/soccer-field-vector-illustration_43986-2.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 50%;
+  height: 50%;
+  margin-left: 12%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  border-radius: 20px;
+}
