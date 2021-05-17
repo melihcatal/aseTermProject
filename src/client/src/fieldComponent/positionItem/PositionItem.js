@@ -2,7 +2,6 @@ import React from "react";
 import "./PositionItemStyle.css";
 
 function PositionItem(props) {
-  console.log("env => " + JSON.stringify(process.env, null, 2));
   console.log(
     `rgb(235,${Math.floor(
       props.info.score * process.env.REACT_APP_FIELD_BACK_COEF

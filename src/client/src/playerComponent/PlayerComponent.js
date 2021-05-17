@@ -3,6 +3,7 @@ import PlayerInfoComponent from "./PlayerInfo/PlayerInfoComponent";
 import "./PlayerComponentStyle.css";
 import React, { Component } from "react";
 import axios from "axios";
+import FieldComponent from "../fieldComponent/FieldComponent";
 
 class PlayerComponent extends Component {
   constructor(props) {
@@ -20,10 +21,9 @@ class PlayerComponent extends Component {
   async getPlayerData() {
     try {
       const playerID = this.props.match.params.id;
-      //const url = `http://localhost:3002/getPlayer/${playerID}`;
-      const url = `/getPlayer/${playerID}`;
+      const url = `http://localhost:3002/getPlayer/${playerID}`;
+      //const url = `/getPlayer/${playerID}`;
       const results = await axios.get(url);
-
       const playerDataLength = Object.keys(results.data.playerData).length;
       if (playerDataLength > 0 && results.data.chartData.length > 0) {
         const resultDiv = (
@@ -33,6 +33,7 @@ class PlayerComponent extends Component {
               playerInfo={results.data.playerInfo}
             />
             <PlayerCharts chartInfo={results.data.chartData} />
+            <FieldComponent data={results.data.positionInfo} />
           </div>
         );
 
