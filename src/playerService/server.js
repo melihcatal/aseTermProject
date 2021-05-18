@@ -3,7 +3,7 @@ const cors = require("cors");
 const axios = require("axios");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
-
+const constansts = require("./constants");
 const app = express();
 app.use(cors());
 
@@ -159,7 +159,6 @@ function getPositionInfo(id) {
         projections.push(currentProjection);
       });
 
-      console.log("projections => " + JSON.stringify(projections, null, 2));
       // map every url to the promise of the fetch
       let requests = projections.map((currentProjection) =>
         getData(
@@ -179,10 +178,193 @@ function getPositionInfo(id) {
   });
 }
 
+function getRadarData(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const collectionName = "players";
+      const sortField = "_id";
+      const sortBy = -1;
+
+      const datas = [
+        constansts.generalData,
+        constansts.attackingData,
+        constansts.skillData,
+        constansts.movementData,
+        constansts.powerData,
+        constansts.mentalityData,
+        constansts.defendingData,
+        constansts.gkData,
+      ];
+      const condition = {
+        _id: ObjectId(id),
+      };
+
+      let projections = [];
+      datas.map((currentData) => {
+        let currentProjection = {};
+        currentData.fields.map((currentField) => {
+          currentProjection[currentField] = 1;
+          currentProjection["_id"] = 0;
+        });
+        projections.push(currentProjection);
+      });
+
+      let requests = projections.map((currentProjection) =>
+        getData(
+          collectionName,
+          sortField,
+          sortBy,
+          1,
+          condition,
+          currentProjection
+        )
+      );
+      const transCoef = 0.5;
+      const results = await Promise.all(requests);
+      let allData = [];
+      results.map((currentResult, index) => {
+        const currentData = datas[index];
+        const chartData = {
+          labels: currentData.labels,
+          datasets: [
+            {
+              label: currentData.label,
+              data: Object.values(currentResult[0]),
+              backgroundColor: `rgba(${Math.floor(
+                Math.random() * 255
+              )},${Math.floor(Math.random() * 255)},${Math.floor(
+                Math.random() * 255
+              )},${transCoef})`,
+            },
+          ],
+        };
+        const type = "radar";
+        const chartInfo = {
+          data: chartData,
+          type: type,
+        };
+        allData.push(chartInfo);
+      });
+      resolve(allData);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function getHistoricalData(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const collectionName = "players";
+      const sortField = "_id";
+      const sortBy = -1;
+
+      const playerInfo = await getDataByID(collectionName, id);
+      const sofifaID = playerInfo.sofifa_id;
+
+      const datas = [
+        constansts.generalData,
+        constansts.attackingData,
+        constansts.skillData,
+        constansts.movementData,
+        constansts.powerData,
+        constansts.mentalityData,
+        constansts.defendingData,
+        constansts.gkData,
+      ];
+      const condition = {
+        sofifa_id: sofifaID,
+      };
+
+      let groups = [];
+
+      datas.map((currentData) => {
+        let currentGroup = {};
+        currentData.fields.map((currentField, index) => {
+          currentGroup[currentData.labels[index]] = {
+            $push: `$${currentField}`,
+          };
+          currentGroup["years"] = {
+            $push: `$year`,
+          };
+          currentGroup["_id"] = "$sofifa_id";
+        });
+        groups.push(currentGroup);
+      });
+
+      let requests = groups.map((currentGroup) =>
+        getData(
+          collectionName,
+          sortField,
+          sortBy,
+          0,
+          condition,
+          { _id: 0 },
+          currentGroup
+        )
+      );
+      const transCoef = 0.5;
+      const results = await Promise.all(requests);
+
+      let allData = [];
+      results.map((currentResult) => {
+        let chartData = {};
+        let tempDatasets = [];
+        currentResult.map((currentItem) => {
+          chartData["labels"] = currentItem.years;
+
+          delete currentItem.years;
+
+          for (const [key, value] of Object.entries(currentItem)) {
+            const tempData = {
+              label: key,
+              data: value,
+              backgroundColor: `rgba(${Math.floor(
+                Math.random() * 255
+              )},${Math.floor(Math.random() * 255)},${Math.floor(
+                Math.random() * 255
+              )},${transCoef})`,
+            };
+            tempDatasets.push(tempData);
+          }
+        });
+        chartData["datasets"] = tempDatasets;
+
+        const type = "line";
+        const chartInfo = {
+          data: chartData,
+          type: type,
+        };
+        allData.push(chartInfo);
+      });
+      resolve(allData);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+function getChartData(id) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const radarData = await getRadarData(id);
+      const historicalData = await getHistoricalData(id);
+
+      const response = {
+        radarData: radarData,
+        historicalData: historicalData,
+      };
+
+      resolve(response);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 app.get("/test", async (req, res) => {
   console.log("oki");
   try {
-    const anan = await getPositionInfo("60a0f9002f6cbf50887fbc1e2");
+    const anan = await getChartData("60a0f8e42f6bf50887fa3756");
     res.send(anan);
   } catch (error) {
     res.send(error);
@@ -211,51 +393,40 @@ app.get("/getPlayer/:id", async (req, res) => {
         imageUrl: result.imageUrl,
       };
 
-      const chartData = {
-        labels: [
-          "Finishing",
-          "Volleys",
-          "Crossing",
-          "Short Passing",
-          "Heading ",
-        ],
-        datasets: [
-          {
-            label: "Attacking",
-            data: [
-              result.attacking_finishing,
-              result.attacking_volleys,
-              result.attacking_crossing,
-              result.attacking_short_passing,
-              result.attacking_heading_accuracy,
-            ],
-            backgroundColor: "rgba(255, 0, 0, 0.5)",
-          },
-        ],
-      };
+      // const chartData = {
+      //   labels: [
+      //     "Finishing",
+      //     "Volleys",
+      //     "Crossing",
+      //     "Short Passing",
+      //     "Heading ",
+      //   ],
+      //   datasets: [
+      //     {
+      //       label: "Attacking",
+      //       data: [
+      //         result.attacking_finishing,
+      //         result.attacking_volleys,
+      //         result.attacking_crossing,
+      //         result.attacking_short_passing,
+      //         result.attacking_heading_accuracy,
+      //       ],
+      //       backgroundColor: "rgba(255, 0, 0, 0.5)",
+      //     },
+      //   ],
+      // };
 
-      const chartInfo = {
-        data: chartData,
-        type: "radar",
-      };
+      // const chartInfo = {
+      //   data: chartData,
+      //   type: "radar",
+      // };
+
+      const chartData = await getChartData(id);
       const positionInfo = await getPositionInfo(id);
       const response = {
         playerData: playerData,
         playerInfo: playerInfo,
-        chartData: [
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-          chartInfo,
-        ],
+        chartData: chartData,
         positionInfo: positionInfo,
       };
 
