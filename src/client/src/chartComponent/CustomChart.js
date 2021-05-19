@@ -13,7 +13,7 @@ function CustomChart(props) {
   const Chart = components[props.chartInfo.type];
 
   return (
-    <div id="customChartDiv">
+    <div className="customChartDiv" id={props.id || "customChartDiv"}>
       <Chart
         data={props.chartInfo.data}
         options={props.chartInfo.options || {}}

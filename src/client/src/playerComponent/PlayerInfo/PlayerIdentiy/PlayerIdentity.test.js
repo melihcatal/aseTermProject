@@ -16,9 +16,10 @@ test("Should render photo , name and nationality of player", () => {
 
   const wrapperImage = wrapper.find("img");
   const wrapperName = wrapper.find("h3");
-  const wrapperNationality = wrapper.find("h4");
+  const wrapperCountrtyFlag = wrapper.find("#playerIdentityCountry");
+  const countryFlagSrc = `https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/${playerInfo.nationality}.png`;
 
-  expect(wrapperImage.props().src).toBe(imageUrl);
+  expect(wrapperImage.at(0).props().src).toBe(imageUrl);
   expect(wrapperName.text()).toBe(name);
-  expect(wrapperNationality.text()).toBe(nationality);
+  expect(wrapperCountrtyFlag.props().src).toBe(countryFlagSrc);
 });
