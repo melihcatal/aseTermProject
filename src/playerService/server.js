@@ -361,15 +361,6 @@ function getChartData(id) {
     }
   });
 }
-app.get("/test", async (req, res) => {
-  console.log("oki");
-  try {
-    const anan = await getChartData("60a0f8e42f6bf50887fa3756");
-    res.send(anan);
-  } catch (error) {
-    res.send(error);
-  }
-});
 
 app.get("/getPlayer/:id", async (req, res) => {
   try {
@@ -392,35 +383,6 @@ app.get("/getPlayer/:id", async (req, res) => {
         nationality: result.nationality,
         imageUrl: result.imageUrl,
       };
-
-      // const chartData = {
-      //   labels: [
-      //     "Finishing",
-      //     "Volleys",
-      //     "Crossing",
-      //     "Short Passing",
-      //     "Heading ",
-      //   ],
-      //   datasets: [
-      //     {
-      //       label: "Attacking",
-      //       data: [
-      //         result.attacking_finishing,
-      //         result.attacking_volleys,
-      //         result.attacking_crossing,
-      //         result.attacking_short_passing,
-      //         result.attacking_heading_accuracy,
-      //       ],
-      //       backgroundColor: "rgba(255, 0, 0, 0.5)",
-      //     },
-      //   ],
-      // };
-
-      // const chartInfo = {
-      //   data: chartData,
-      //   type: "radar",
-      // };
-
       const chartData = await getChartData(id);
       const positionInfo = await getPositionInfo(id);
       const response = {
@@ -444,4 +406,7 @@ module.exports = {
   databaseExist: databaseExist,
   connectDatabase: connectDatabase,
   getDataByID: getDataByID,
+  getChartData: getChartData,
+  getRadarData: getRadarData,
+  getHistoricalData: getHistoricalData,
 };

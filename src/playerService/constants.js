@@ -9,7 +9,6 @@ const attackingData = {
   fields: [
     "attacking_crossing",
     "attacking_finishing",
-    "attacking_finishing",
     "attacking_heading_accuracy",
     "attacking_short_passing",
     "attacking_volleys",
