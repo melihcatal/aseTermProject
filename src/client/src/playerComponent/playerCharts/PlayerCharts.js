@@ -12,7 +12,12 @@ function PlayerCharts(props) {
       if (props.chartInfo.length > 0) {
         let tempArray = [];
         props.chartInfo.map((chartInfo) => {
-          const currentChart = <CustomChart chartInfo={chartInfo} />;
+          const currentChart = (
+            <CustomChart
+              id={props.id ? "lineChart" : null}
+              chartInfo={chartInfo}
+            />
+          );
           tempArray.push(currentChart);
         });
         setChartItems(tempArray);
@@ -24,7 +29,11 @@ function PlayerCharts(props) {
     }
   }, []);
 
-  return <div id="playerChartsDiv">{isWarning ? warning : chartItems}</div>;
+  return (
+    <div className="playerChartsDiv" id={props.id || "playerChartsDiv"}>
+      {isWarning ? warning : chartItems}
+    </div>
+  );
 }
 
 export default PlayerCharts;

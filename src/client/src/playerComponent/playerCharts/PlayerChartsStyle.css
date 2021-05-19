@@ -1,20 +1,31 @@
-#playerChartsDiv {
-  /* display: flex;
-  width: 100%;
-  height: 60%;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-  overflow-x: scroll; */
+.playerChartsDiv {
   display: grid;
   grid-template-columns: 20% 20% 20% 20%;
   padding: 1%;
   grid-gap: 5%;
   margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
-#playerChartsDiv div {
+.playerChartsDiv div {
   box-shadow: 0px 0px 10px 5px rgba(255, 0, 5, 0.1);
   border-radius: 10%;
   padding: 5%;
+}
+
+#lineChartDiv {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  align-items: center;
+  align-content: center;
+  overflow-x: scroll;
+  margin-left: -0.2%;
+}
+
+.customChartDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }

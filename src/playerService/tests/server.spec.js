@@ -4,6 +4,8 @@ const e = require("express");
 const { MongoClient } = require("mongodb");
 const request = supertest(server.app);
 const sampleUser = require("./sampleUser.json");
+const sampleChart = require("./sampleChart.json");
+
 require("dotenv").config();
 const ObjectId = require("mongodb").ObjectID;
 
@@ -66,12 +68,16 @@ describe("Player Functions Testing", () => {
       server.getDataByID(collectionName, absentUserID)
     ).resolves.toContain("Not Found");
   });
+
+  it("Test Getting Chart Function", async () => {
+    await expect(server.getChartData(sampleUser._id)).resolves.toBeTruthy();
+  });
 });
 
 describe("Player Api Testing", () => {
   it("Get Player By ID", async () => {
     const existUserID = "60a0f8e82f6bf50887fa73be";
-    const absentUserID = "60a0f8ed2f6bf50887faadc2";
+    const absentUserID = "10a0f8ed2f6bf50887faadc2";
 
     const existCall = await request.get(`/getPlayer/${existUserID}`);
     const absentCall = await request.get(`/getPlayer/${absentUserID}`);
@@ -79,7 +85,7 @@ describe("Player Api Testing", () => {
     expect(existCall.status).toEqual(200);
     expect(JSON.parse(existCall.text)).toBeTruthy();
 
-    // expect(absentCall.status).toEqual(404);
-    // expect(absentCall.text).toContain("Not Found");
+    expect(absentCall.status).toEqual(404);
+    expect(absentCall.text).toContain("Not Found");
   });
 });
