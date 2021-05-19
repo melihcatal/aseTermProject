@@ -16,8 +16,8 @@ class SearchComponent extends Component {
   async getPlayerData(searchText) {
     try {
       if (searchText != "") {
-        // const url = `http://${process.env.DATABASE_URL}/searchPlayer/${searchText}`;
         const url = `/searchPlayer/${searchText}`;
+        // const url = `http://localhost:3001/searchPlayer/${searchText}`;
         console.log("url => " + url);
         const results = await axios.get(url);
         this.setState({
@@ -45,7 +45,7 @@ class SearchComponent extends Component {
   render() {
     return (
       <div id="searchDiv">
-        <SearchBar getPlayerData={this.getPlayerData} />
+        <SearchBar getData={this.getPlayerData} />
         {this.state.results != null && <Results results={this.state.results} />}
       </div>
     );

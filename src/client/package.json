@@ -7,12 +7,14 @@
         "@testing-library/user-event": "^12.8.3",
         "axios": "^0.21.1",
         "chart.js": "^3.2.1",
+        "dotenv": "^8.2.0",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.6",
         "jsonschema": "^1.4.0",
         "react": "^16.0.0",
         "react-chartjs-2": "^3.0.3",
         "react-dom": "^16.0.0",
+        "react-modal": "^3.13.1",
         "react-router": "^5.2.0",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
@@ -21,7 +23,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "CI=false react-scripts test -u --silent --coverage",
+        "test": "CI=false react-scripts test -u --silent --colors  ",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
