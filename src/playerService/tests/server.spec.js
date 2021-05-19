@@ -70,8 +70,7 @@ describe("Player Functions Testing", () => {
   });
 
   it("Test Getting Chart Function", async () => {
-    const id = "60a0f8e42f6bf50887fa3756";
-    await expect(server.getChartData(id)).resolves.toBeTruthy();
+    await expect(server.getChartData(sampleUser._id)).resolves.toBeTruthy();
   });
 });
 
