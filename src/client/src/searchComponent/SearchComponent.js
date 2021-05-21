@@ -16,8 +16,8 @@ class SearchComponent extends Component {
   async getPlayerData(searchText) {
     try {
       if (searchText != "") {
-        const url = `/searchPlayer/${searchText}`;
-        // const url = `http://localhost:3001/searchPlayer/${searchText}`;
+        //const url = `/searchPlayer/${searchText}`;
+        const url = `http://localhost:3001/searchPlayer/${searchText}`;
         console.log("url => " + url);
         const results = await axios.get(url);
         this.setState({
