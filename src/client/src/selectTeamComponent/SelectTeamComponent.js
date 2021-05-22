@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TeamItem from "./teamItem/TeamItem";
 import TeamModel from "./TeamModel";
 import "./SelectTeamComponentStyle.css";
+import { Link } from "react-router-dom";
 
 function SelectTeamComponent(props) {
   const [team1Selected, setTeam1Selected] = useState(false);
@@ -46,7 +47,18 @@ function SelectTeamComponent(props) {
         title={"Search Team"}
       />
 
-      <button>Compare</button>
+      <Link
+        to={{
+          pathname: "/compareTeams",
+          search: `?homeTeam=${team1Name}&awayTeam=${team2Name}`,
+          state: {
+            homeLogo: team1Image,
+            awayLogo: team2Image,
+          },
+        }}
+      >
+        Compare
+      </Link>
     </div>
   );
 }

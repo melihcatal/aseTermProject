@@ -8,6 +8,7 @@ services:
   #   image: melihcatal/client
   #   environment:
   #     DATABASE_URL: ${DATABASE_URL}
+  #     REACT_APP_FIELD_BACK_COEF : 0.5
   #   ports:
   #     - 3000:3000
   #   depends_on: 

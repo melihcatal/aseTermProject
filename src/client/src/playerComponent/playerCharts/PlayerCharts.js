@@ -6,7 +6,6 @@ function PlayerCharts(props) {
   const [chartItems, setChartItems] = useState([]);
   const [isWarning, setWarning] = useState(false);
   const warning = <h4>Error</h4>;
-  console.log("chart => " + JSON.stringify(props, null, 2));
   useEffect(() => {
     try {
       if (props.chartInfo.length > 0) {

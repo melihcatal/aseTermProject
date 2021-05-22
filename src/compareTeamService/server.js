@@ -79,7 +79,7 @@ function getDataByID(collectionName, id) {
       if (result) {
         resolve(result);
       } else {
-        resolve("Not Found");
+        reject("Not Found");
       }
     } catch (error) {
       console.log("error => " + error);
@@ -103,7 +103,7 @@ function getData(collectionName, aggregation) {
       if (result.length > 0) {
         resolve(result);
       } else {
-        resolve("Not Found");
+        resolve([]);
       }
     } catch (error) {
       reject(error);
@@ -165,11 +165,27 @@ function getTeamPositionData(teamName) {
           $avg: "$players.overall",
         },
       };
+      const positions = [
+        ["GK"],
+        ["LB", "LCB", "CB", "RCB", "RB"],
+        ["LWB", "LDM", "CDM", "RDM", "RWB"],
+        ["LM", "LCM", "CM", "RCM", "RM"],
+        ["LAM", "CAM", "RAM"],
+        ["LW", "LF", "CF", "RF", "RW"],
+        ["LS", "ST", "RS"],
+      ];
 
       const projection = {
         _id: 1,
-        players: 1,
-        bestPlayer: 1,
+        "players._id": 1,
+        "players.short_name": 1,
+        "players.overall": 1,
+        "players.imageUrl": 1,
+
+        "bestPlayer._id": 1,
+        "bestPlayer.short_name": 1,
+        "bestPlayer.overall": 1,
+        "bestPlayer.imageUrl": 1,
         bestOverall: {
           $round: ["$bestOverall", 0],
         },
@@ -177,23 +193,38 @@ function getTeamPositionData(teamName) {
           $round: ["$averageOverall", 0],
         },
       };
-      const aggregation = [
-        { $match: clubMatch },
-        { $lookup: lookup },
-        { $unwind: unwindPlayers },
-        { $match: yearMatch },
-        { $addFields: addFields },
-        { $unwind: unwindPositions },
-        { $sort: sort },
-        { $group: group },
-        { $project: projection },
-      ];
+
+      let aggregationList = [];
+      positions.map((currentPosition) => {
+        const currentPositionMatch = {
+          _id: {
+            $in: currentPosition,
+          },
+        };
+        const aggregation = [
+          { $match: clubMatch },
+          { $lookup: lookup },
+          { $unwind: unwindPlayers },
+          { $match: yearMatch },
+          { $addFields: addFields },
+          { $unwind: unwindPositions },
+          // { $sort: sort },
+          { $group: group },
+          { $project: projection },
+          { $match: currentPositionMatch },
+        ];
+        aggregationList.push(aggregation);
+      });
 
       const collectionName = "teams";
 
-      const result = await getData(collectionName, aggregation);
+      let requests = aggregationList.map((currentAggregation) =>
+        getData(collectionName, currentAggregation)
+      );
+      //const result = await getData(collectionName, aggregation);
+      const results = Promise.all(requests);
 
-      resolve(result);
+      resolve(results);
     } catch (error) {
       reject(error.message);
     }
@@ -490,6 +521,61 @@ function createChartData(homeData, awayData) {
   });
 }
 
+function getTeamPlayers(teamName) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const clubMatch = {
+        clubName: teamName,
+      };
+      const lookup = {
+        from: "players",
+        localField: "clubName",
+        foreignField: "club",
+        as: "players",
+      };
+
+      const unwindPlayers = {
+        path: "$players",
+      };
+
+      const yearMatch = {
+        "players.year": 2021,
+      };
+
+      const sort = {
+        "players.overall": -1,
+      };
+
+      const group = {
+        _id: null,
+        players: {
+          $push: "$players",
+        },
+      };
+      const project = {
+        _id: 1,
+        "players._id": 1,
+        "players.short_name": 1,
+        "players.overall": 1,
+        "players.imageUrl": 1,
+      };
+      const aggregation = [
+        { $match: clubMatch },
+        { $lookup: lookup },
+        { $unwind: unwindPlayers },
+        { $match: yearMatch },
+        { $sort: sort },
+        { $group: group },
+        { $project: project },
+      ];
+
+      const result = await getData("teams", aggregation);
+      resolve(result);
+    } catch (error) {
+      reject("Get Team" + error);
+    }
+  });
+}
 app.get("/compareTeams", async (req, res) => {
   try {
     const homeTeam = req.query.homeTeam;
@@ -515,6 +601,8 @@ app.get("/compareTeams", async (req, res) => {
       awayTeamData,
       homeTeamStack,
       awayTeamStack,
+      homeTeamPlayers,
+      awayTeamPlayers,
     ] = await Promise.all([
       getTeamPositionData(homeTeam),
       getTeamPositionData(awayTeam),
@@ -522,6 +610,8 @@ app.get("/compareTeams", async (req, res) => {
       getTeamData(awayTeam),
       getTeamStackData(homeTeam),
       getTeamStackData(awayTeam),
+      getTeamPlayers(homeTeam),
+      getTeamPlayers(awayTeam),
     ]);
 
     const radarData = await createChartData(homeTeamData, awayTeamData);
@@ -531,9 +621,11 @@ app.get("/compareTeams", async (req, res) => {
       stackData: stackData,
       homeTeamPlayerData: homeTeamPlayerData,
       awayTeamPlayerData: awayTeamPlayerData,
+      homeTeamPlayers: homeTeamPlayers,
+      awayTeamPlayers: awayTeamPlayers,
     };
 
-    // const asd = await getTeamData(awayTeam);
+    // const asd = await getTeamPositionData(homeTeam);
     res.status(200).send(response);
   } catch (error) {
     console.log(error);
