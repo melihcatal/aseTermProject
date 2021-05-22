@@ -85,6 +85,14 @@ const gkData = {
   labels: ["Diving", "Handling", "Kicking", "Positioning", "Reflexes"],
 };
 
+//prettier-ignore
+const positions = {
+  Attacking: [ "LW", "LF", "CF", "RF", "RW", "LS", "ST", "RS"],
+  Defending: ["LB", "LCB", "CB", "RCB", "RB", "LWB", "LDM", "CDM", "RDM", "RWB"],
+  General: ["GK", "LB", "LCB", "CB", "RCB", "RB", "LWB", "LDM", "CDM", "RDM", "RWB",
+   "LM", "LCM", "CM", "RCM", "RM", "LAM", "CAM", "RAM", "LW", "LF", "CF", "RF", "RW", "LS", "ST", "RS"],
+  GoalKeeping: ["GK"]
+}
 module.exports = {
   generalData: generalData,
   attackingData: attackingData,
@@ -94,4 +102,5 @@ module.exports = {
   mentalityData: mentalityData,
   defendingData: defendingData,
   gkData: gkData,
+  positions: positions,
 };

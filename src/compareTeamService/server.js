@@ -4,6 +4,8 @@ const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 const constants = require("./constants");
+const { response } = require("express");
+app.use(cors());
 
 require("dotenv").config({
   path: "../../.env",
@@ -169,10 +171,10 @@ function getTeamPositionData(teamName) {
         players: 1,
         bestPlayer: 1,
         bestOverall: {
-          $round: ["$bestOverall", 1],
+          $round: ["$bestOverall", 0],
         },
         averageOverall: {
-          $round: ["$averageOverall", 1],
+          $round: ["$averageOverall", 0],
         },
       };
       const aggregation = [
@@ -218,6 +220,15 @@ function getTeamData(teamName) {
       const yearMatch = {
         "players.year": 2021,
       };
+      const addFields = {
+        positions: {
+          $split: ["$players.player_positions", ","],
+        },
+      };
+
+      const unwind = {
+        path: "$positions",
+      };
 
       const datas = [
         constants.generalData,
@@ -256,7 +267,7 @@ function getTeamData(teamName) {
 
         fields.map((currentField) => {
           projection[currentField] = {
-            $round: [`$${currentField}`, 1],
+            $round: [`$${currentField}`, 0],
           };
           projection["_id"] = 0;
         });
@@ -266,12 +277,26 @@ function getTeamData(teamName) {
         //     $avg: labelProjections,
         //   },
         // };
+        let positionMatch = {};
+
+        if (constants.positions[currentLabel] != null) {
+          positionMatch["positions"] = {
+            $in: constants.positions[currentLabel],
+          };
+        } else {
+          positionMatch["positions"] = {
+            $in: constants.positions["General"],
+          };
+        }
 
         const aggregation = [
           { $match: clubMatch },
           { $lookup: lookup },
           { $unwind: unwindPlayers },
           { $match: yearMatch },
+          { $addFields: addFields },
+          { $unwind: unwind },
+          { $match: positionMatch },
           { $group: currentGroup },
           { $project: projection },
         ];
@@ -294,11 +319,6 @@ function getTeamData(teamName) {
             {
               label: teamName,
               data: Object.values(currentResult[0]),
-              backgroundColor: `rgba(${Math.floor(
-                Math.random() * 255
-              )},${Math.floor(Math.random() * 255)},${Math.floor(
-                Math.random() * 255
-              )},${transCoef})`,
             },
           ],
         };
@@ -335,6 +355,16 @@ function getTeamStackData(teamName) {
 
       const yearMatch = {
         "players.year": 2021,
+      };
+
+      const addFields = {
+        positions: {
+          $split: ["$players.player_positions", ","],
+        },
+      };
+
+      const unwind = {
+        path: "$positions",
       };
 
       const datas = [
@@ -386,11 +416,26 @@ function getTeamStackData(teamName) {
 
         projection["_id"] = 0;
 
+        let positionMatch = {};
+
+        if (constants.positions[currentLabel] != null) {
+          positionMatch["positions"] = {
+            $in: constants.positions[currentLabel],
+          };
+        } else {
+          positionMatch["positions"] = {
+            $in: constants.positions["General"],
+          };
+        }
+
         const aggregation = [
           { $match: clubMatch },
           { $lookup: lookup },
           { $unwind: unwindPlayers },
           { $match: yearMatch },
+          { $addFields: addFields },
+          { $unwind: unwind },
+          { $match: positionMatch },
           { $group: currentGroup },
           { $project: projection },
         ];
@@ -402,22 +447,16 @@ function getTeamStackData(teamName) {
       let requests = aggregationList.map((currentAggregation) =>
         getData(collectionName, currentAggregation)
       );
-      const transCoef = 0.5;
       const results = await Promise.all(requests);
       let allData = [];
       results.map((currentResult, index) => {
         const currentData = datas[index];
         const chartData = {
-          labels: currentData.label,
+          labels: [currentData.label],
           datasets: [
             {
               label: teamName,
               data: Object.values(currentResult[0]),
-              backgroundColor: `rgba(${Math.floor(
-                Math.random() * 255
-              )},${Math.floor(Math.random() * 255)},${Math.floor(
-                Math.random() * 255
-              )},${transCoef})`,
             },
           ],
         };
@@ -434,12 +473,15 @@ function getTeamStackData(teamName) {
     }
   });
 }
+let homeBack, awayBack;
 
 function createChartData(homeData, awayData) {
   return new Promise((resolve, reject) => {
     try {
       homeData.map((currentHome, index) => {
-        currentHome.data.datasets.push(awayData[index].data.datasets);
+        currentHome.data.datasets.push(awayData[index].data.datasets[0]);
+        currentHome.data.datasets[0]["backgroundColor"] = homeBack;
+        awayData[index].data.datasets[0]["backgroundColor"] = awayBack;
       });
       resolve(homeData);
     } catch (error) {
@@ -456,6 +498,15 @@ app.get("/compareTeams", async (req, res) => {
     if (homeTeam == undefined || awayTeam == undefined) {
       throw "Error";
     }
+    const transCoef = 0.5;
+
+    homeBack = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(
+      Math.random() * 255
+    )},${Math.floor(Math.random() * 255)},${transCoef})`;
+
+    awayBack = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(
+      Math.random() * 255
+    )},${Math.floor(Math.random() * 255)},${transCoef})`;
 
     const [
       homeTeamPlayerData,
@@ -481,6 +532,8 @@ app.get("/compareTeams", async (req, res) => {
       homeTeamPlayerData: homeTeamPlayerData,
       awayTeamPlayerData: awayTeamPlayerData,
     };
+
+    // const asd = await getTeamData(awayTeam);
     res.status(200).send(response);
   } catch (error) {
     console.log(error);

@@ -143,7 +143,7 @@ function getPositionInfo(id) {
         ["lwb", "ldm", "cdm", "rdm", "rwb"],
         ["lm", "lcm", "cm", "rcm", "rm"],
         ["lam", "cam", "ram"],
-        ["lw", "lf", "cr", "rf", "rw"],
+        ["lw", "lf", "cf", "rf", "rw"],
         ["ls", "st", "rs"],
       ];
       let projections = [];

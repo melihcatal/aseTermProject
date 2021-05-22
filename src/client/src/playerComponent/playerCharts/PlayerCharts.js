@@ -6,7 +6,7 @@ function PlayerCharts(props) {
   const [chartItems, setChartItems] = useState([]);
   const [isWarning, setWarning] = useState(false);
   const warning = <h4>Error</h4>;
-
+  console.log("chart => " + JSON.stringify(props, null, 2));
   useEffect(() => {
     try {
       if (props.chartInfo.length > 0) {
@@ -16,6 +16,7 @@ function PlayerCharts(props) {
             <CustomChart
               id={props.id ? "lineChart" : null}
               chartInfo={chartInfo}
+              options={props.options || null}
             />
           );
           tempArray.push(currentChart);
