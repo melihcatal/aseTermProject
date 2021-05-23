@@ -24,6 +24,8 @@ class CompareTeams extends Component {
   async getData() {
     try {
       const url = `http://localhost:3003/compareTeams/${this.props.location.search}`;
+      //const url = `/compareTeams/${this.props.location.search}`;
+
       const result = await axios.get(url);
 
       const search = queryString.parse(this.props.location.search);
@@ -68,12 +70,15 @@ class CompareTeams extends Component {
                 awayTeam={this.state.result.awayTeamPlayers}
               />
 
-              <FieldPlayersComponent
-                data={this.state.result.homeTeamPlayerData}
-              />
-              <FieldPlayersComponent
-                data={this.state.result.awayTeamPlayerData}
-              />
+              <div id="compareTeamsFieldsDiv">
+                <FieldPlayersComponent
+                  data={this.state.result.homeTeamPlayerData}
+                />
+                <FieldPlayersComponent
+                  data={this.state.result.awayTeamPlayerData}
+                />
+              </div>
+
               <PlayerCharts
                 chartInfo={this.state.result.stackData}
                 options={this.state.stackOptions}

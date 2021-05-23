@@ -5,7 +5,7 @@
   align-items: center;
   height: 50%;
   position: relative;
-  overflow-x: scroll;
+  overflow-y: scroll;
 }
 table {
   font-family: "Courier New", Courier, monospace;
