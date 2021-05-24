@@ -10,10 +10,14 @@ app.use(cors());
 require("dotenv").config({
   path: "../../.env",
 });
+
+let homeBack, awayBack;
+
 function databaseExist(databaseName) {
   return new Promise(async (resolve, reject) => {
     const databaseUrl = `mongodb://${process.env.MONGO_IP}/${databaseName}`;
     //const databaseUrl = `mongodb://localhost:27017/${databaseName}`;
+
     try {
       const connection = await MongoClient.connect(databaseUrl, {
         connectTimeoutMS: 500,
@@ -30,11 +34,10 @@ function databaseExist(databaseName) {
       };
 
       const databaseList = await admin.listDatabases(listFilter);
-
       const databaseListSize = databaseList.databases.length;
       databaseListSize > 0 ? resolve(true) : resolve(false);
     } catch (error) {
-      console.log("error => " + error);
+      console.log("error =>  databaseName " + error);
       reject("error");
     }
   });
@@ -61,29 +64,6 @@ function connectDatabase(databaseName) {
     } catch (error) {
       console.log(error);
       reject(error);
-    }
-  });
-}
-
-function getDataByID(collectionName, id) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const database = await connectDatabase(process.env.MONGO_DATABASE);
-      const condition = {
-        _id: ObjectId(id),
-      };
-
-      const result = await database
-        .collection(collectionName)
-        .findOne(condition);
-      if (result) {
-        resolve(result);
-      } else {
-        reject("Not Found");
-      }
-    } catch (error) {
-      console.log("error => " + error);
-      reject("Error");
     }
   });
 }
@@ -342,24 +322,30 @@ function getTeamData(teamName) {
       const transCoef = 0.5;
       const results = await Promise.all(requests);
       let allData = [];
-      results.map((currentResult, index) => {
-        const currentData = datas[index];
-        const chartData = {
-          labels: currentData.labels,
-          datasets: [
-            {
-              label: teamName,
-              data: Object.values(currentResult[0]),
-            },
-          ],
-        };
-        const type = "radar";
-        const chartInfo = {
-          data: chartData,
-          type: type,
-        };
-        allData.push(chartInfo);
-      });
+
+      try {
+        results.map((currentResult, index) => {
+          const currentData = datas[index];
+          const chartData = {
+            labels: currentData.labels,
+            datasets: [
+              {
+                label: teamName,
+                data: Object.values(currentResult[0]),
+              },
+            ],
+          };
+          const type = "radar";
+          const chartInfo = {
+            data: chartData,
+            type: type,
+          };
+          allData.push(chartInfo);
+        });
+      } catch (error) {
+        console.log("error");
+      }
+
       resolve(allData);
     } catch (error) {
       reject(error);
@@ -479,32 +465,37 @@ function getTeamStackData(teamName) {
         getData(collectionName, currentAggregation)
       );
       const results = await Promise.all(requests);
+
       let allData = [];
-      results.map((currentResult, index) => {
-        const currentData = datas[index];
-        const chartData = {
-          labels: [currentData.label],
-          datasets: [
-            {
-              label: teamName,
-              data: Object.values(currentResult[0]),
-            },
-          ],
-        };
-        const type = "bar";
-        const chartInfo = {
-          data: chartData,
-          type: type,
-        };
-        allData.push(chartInfo);
-      });
+      try {
+        results.map((currentResult, index) => {
+          const currentData = datas[index];
+          const chartData = {
+            labels: [currentData.label],
+            datasets: [
+              {
+                label: teamName,
+                data: Object.values(currentResult[0]),
+              },
+            ],
+          };
+          const type = "bar";
+          const chartInfo = {
+            data: chartData,
+            type: type,
+          };
+          allData.push(chartInfo);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
       resolve(allData);
     } catch (error) {
       reject(error);
     }
   });
 }
-let homeBack, awayBack;
 
 function createChartData(homeData, awayData) {
   return new Promise((resolve, reject) => {
@@ -635,4 +626,12 @@ app.get("/compareTeams", async (req, res) => {
 
 module.exports = {
   app: app,
+  databaseExist: databaseExist,
+  connectDatabase: connectDatabase,
+  getData: getData,
+  getTeamPositionData: getTeamPositionData,
+  getTeamData: getTeamData,
+  getTeamStackData: getTeamStackData,
+  createChartData: createChartData,
+  getTeamPlayers: getTeamPlayers,
 };

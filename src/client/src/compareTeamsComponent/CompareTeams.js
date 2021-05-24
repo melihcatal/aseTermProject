@@ -5,7 +5,7 @@ import PlayerCharts from "../playerComponent/playerCharts/PlayerCharts";
 import queryString from "query-string";
 import CompareLogo from "./compareLogoComponent/CompareLogo";
 import FieldPlayersComponent from "./fieldPlayersComponent/FieldPlayersComponent";
-import ComparePlayersTable from "./compareTeamsPlayers/ComparePlayersTable";
+import ComparePlayersTable from "./teamsPlayerTable/ComparePlayersTable";
 class CompareTeams extends Component {
   constructor(props) {
     super(props);
@@ -23,13 +23,12 @@ class CompareTeams extends Component {
 
   async getData() {
     try {
-      const url = `http://localhost:3003/compareTeams/${this.props.location.search}`;
-      //const url = `/compareTeams/${this.props.location.search}`;
+      // const url = `http://localhost:3003/compareTeams/${this.props.location.search}`;
+      const url = `/compareTeams/${this.props.location.search}`;
 
       const result = await axios.get(url);
 
       const search = queryString.parse(this.props.location.search);
-
       this.setState({
         result: result.data,
         isLoaded: true,
@@ -47,7 +46,6 @@ class CompareTeams extends Component {
     }
   }
   componentWillMount() {
-    console.log("props => " + JSON.stringify(this.props, null, 2));
     this.getData();
   }
 

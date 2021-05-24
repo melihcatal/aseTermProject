@@ -7,7 +7,7 @@ on:
     branches: [ main ,develop]
 
 env:
-  IMAGE_NAME: 'melihcatal/compareTeamService'
+  IMAGE_NAME: 'melihcatal/compareteamservice'
   MONGOMS_ARCH: x64
   MONGO_DATABASE: 'fifa'
   FIELD_BACK_COEF : 2.47

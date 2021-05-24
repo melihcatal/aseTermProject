@@ -1,0 +1,340 @@
+ {
+    "homeTeamPlayers": [
+        {
+            "_id": null,
+            "players": [
+                {
+                    "_id": "60a79aca6b148a03fb95c47c",
+                    "short_name": "A. Nwakaeme",
+                    "overall": 78,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/241771.png"
+                },
+                {
+                    "_id": "60a79aca6b148a03fb95c4b9",
+                    "short_name": "A. Sørloth",
+                    "overall": 77,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/216549.png"
+                },
+                {
+                    "_id": "60a79aca6b148a03fb95c4bd",
+                    "short_name": "U. Çakır",
+                    "overall": 77,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/226300.png"
+                },
+                {
+                    "_id": "60a79aca6b148a03fb95c707",
+                    "short_name": "A. Ömür",
+                    "overall": 75,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/231777.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95ca4c",
+                    "short_name": "Guilherme",
+                    "overall": 74,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/200438.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95ca66",
+                    "short_name": "João Pereira",
+                    "overall": 74,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/206407.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95cb75",
+                    "short_name": "A. Parmak",
+                    "overall": 73,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/245535.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95cdad",
+                    "short_name": "Edgar Ié",
+                    "overall": 72,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/210520.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d03e",
+                    "short_name": "Marlon",
+                    "overall": 71,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/235338.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d106",
+                    "short_name": "C. Ekuban",
+                    "overall": 71,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/239795.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d35b",
+                    "short_name": "A. Trondsen",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/210688.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d35c",
+                    "short_name": "L. Baker",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/211504.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d384",
+                    "short_name": "H. Türkmen",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/243244.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d425",
+                    "short_name": "B. Afobe",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/202052.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d518",
+                    "short_name": "K. Çörekçi",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/199683.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d759",
+                    "short_name": "M. Hosseini",
+                    "overall": 69,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/243549.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95d946",
+                    "short_name": "G. Campi",
+                    "overall": 69,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/220429.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95da0f",
+                    "short_name": "S. Plaza",
+                    "overall": 68,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/246203.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95da3f",
+                    "short_name": "Y. Sarı",
+                    "overall": 68,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/241389.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95db4f",
+                    "short_name": "B. Başaçıkoğlu",
+                    "overall": 68,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/209769.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95e414",
+                    "short_name": "E. Kardeşler",
+                    "overall": 66,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/252081.png"
+                },
+                {
+                    "_id": "60a79acd6b148a03fb95e755",
+                    "short_name": "A. Dursun",
+                    "overall": 65,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/241688.png"
+                },
+                {
+                    "_id": "60a79acd6b148a03fb95ed16",
+                    "short_name": "S. Asan",
+                    "overall": 64,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/254257.png"
+                },
+                {
+                    "_id": "60a79acd6b148a03fb95ef94",
+                    "short_name": "A. Akbulut",
+                    "overall": 63,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/240809.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95f3ed",
+                    "short_name": "S. Kavrazlı",
+                    "overall": 62,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/251151.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95f753",
+                    "short_name": "A. Gündüz",
+                    "overall": 61,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/251147.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95f812",
+                    "short_name": "A. Canbaz",
+                    "overall": 61,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/241051.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95fbf2",
+                    "short_name": "S. Kınalı",
+                    "overall": 60,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/258896.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95fc2a",
+                    "short_name": "Flavio",
+                    "overall": 60,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/234134.png"
+                }
+            ]
+        }
+    ],
+    "awayTeamPlayers": [
+        {
+            "_id": null,
+            "players": [
+                {
+                    "_id": "60a79aca6b148a03fb95c591",
+                    "short_name": "Davidson",
+                    "overall": 77,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/237135.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95ca13",
+                    "short_name": "Juanfran",
+                    "overall": 74,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/188135.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95ca3e",
+                    "short_name": "G. Tzavellas",
+                    "overall": 74,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/199060.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95caad",
+                    "short_name": "E. Karaca",
+                    "overall": 74,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/234870.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95cc5e",
+                    "short_name": "Marafona",
+                    "overall": 73,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/200798.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95cde8",
+                    "short_name": "M. Siopis",
+                    "overall": 72,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/236773.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95ce16",
+                    "short_name": "K. Babacar",
+                    "overall": 72,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/197231.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95ce25",
+                    "short_name": "A. Bakasetas",
+                    "overall": 72,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/208250.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d3c1",
+                    "short_name": "S. Uçan",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/216814.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d3ea",
+                    "short_name": "S. Caulker",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/193504.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d499",
+                    "short_name": "C. Gülselam",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/180409.png"
+                },
+                {
+                    "_id": "60a79acb6b148a03fb95d50b",
+                    "short_name": "F. Moubandje",
+                    "overall": 70,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/198067.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95d88f",
+                    "short_name": "M. Pektemek",
+                    "overall": 69,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/188674.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95daa3",
+                    "short_name": "A. Bareiro",
+                    "overall": 68,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/246690.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95e172",
+                    "short_name": "T. Bingöl",
+                    "overall": 67,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/224724.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95e2c2",
+                    "short_name": "F. Aksoy",
+                    "overall": 66,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/240908.png"
+                },
+                {
+                    "_id": "60a79acc6b148a03fb95e3d2",
+                    "short_name": "O. Bulut",
+                    "overall": 66,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/205939.png"
+                },
+                {
+                    "_id": "60a79acd6b148a03fb95e958",
+                    "short_name": "U. Ceylan",
+                    "overall": 65,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/128529.png"
+                },
+                {
+                    "_id": "60a79acd6b148a03fb95efab",
+                    "short_name": "A. Gülay",
+                    "overall": 63,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/258352.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95fcc5",
+                    "short_name": "H. Ayaroğlu",
+                    "overall": 60,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/243884.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb95ff36",
+                    "short_name": "E. Altıntaş",
+                    "overall": 59,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/224749.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb960312",
+                    "short_name": "H. Emiroğlu",
+                    "overall": 57,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/235924.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb960330",
+                    "short_name": "M. Sevimler",
+                    "overall": 57,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/237737.png"
+                },
+                {
+                    "_id": "60a79ace6b148a03fb960369",
+                    "short_name": "R. Öktem",
+                    "overall": 57,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/235923.png"
+                },
+                {
+                    "_id": "60a79acf6b148a03fb960590",
+                    "short_name": "U. Güneş",
+                    "overall": 55,
+                    "imageUrl": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/255293.png"
+                }
+            ]
+        }
+    ]
+}

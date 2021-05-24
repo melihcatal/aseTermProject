@@ -1,20 +1,20 @@
 version: "3"
 
 services:
-  # client:
-  #   build: 
-  #     context: src/client
-  #     dockerfile: ./Dockerfile
-  #   image: melihcatal/client
-  #   environment:
-  #     DATABASE_URL: ${DATABASE_URL}
-  #     REACT_APP_FIELD_BACK_COEF : 0.5
-  #   ports:
-  #     - 3000:3000
-  #   depends_on: 
-  #     - searchservice  
-  #     - playerservice
-  #     - compareteamservice
+  client:
+    build: 
+      context: src/client
+      dockerfile: ./Dockerfile
+    image: melihcatal/client
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      REACT_APP_FIELD_BACK_COEF : 0.5
+    ports:
+      - 3000:3000
+    depends_on: 
+      - searchservice  
+      - playerservice
+      - compareteamservice
   searchservice:
     build: 
       context: src/searchService
@@ -39,37 +39,37 @@ services:
       - 3002:3000
     depends_on: 
       - mongo
-  # compareteamservice:
-  #   build:
-  #     context: src/compareTeamService
-  #     dockerfile: ./Dockerfile 
-  #   image: melihcatal/compareteamservice 
-  #   environment: 
-  #     MONGO_IP: ${MONGO_IP}
-  #     MONGO_DATABASE: ${MONGO_DATABASE}
-  #     FIELD_BACK_COEF : ${FIELD_BACK_COEF}
-  #   ports:
-  #     - 3003:3000
-  #   depends_on: 
-  #     - mongo  
+  compareteamservice:
+    build:
+      context: src/compareTeamService
+      dockerfile: ./Dockerfile 
+    image: melihcatal/compareteamservice 
+    environment: 
+      MONGO_IP: ${MONGO_IP}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      FIELD_BACK_COEF : ${FIELD_BACK_COEF}
+    ports:
+      - 3003:3000
+    depends_on: 
+      - mongo  
   mongo:
     image: mongo
     ports:
       - 27017:27017
     volumes:
       - mongo-data:/data/db
-  # nginx:
-  #   image: nginx:latest
-  #   ports:
-  #     - "8080:8080"
-  #   volumes:
-  #     - ./default.conf:/etc/nginx/conf.d/default.conf
-  #   depends_on:
-  #     - client
-  #     - playerservice
-  #     - searchservice
-  #     - mongo 
-  #     - compareteamservice     
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - client
+      - playerservice
+      - searchservice
+      - mongo 
+      - compareteamservice     
 volumes:
   mongo-data:
     driver: local
