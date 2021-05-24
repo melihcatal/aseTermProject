@@ -15,6 +15,6 @@ describe("Compare Popup Item testing", () => {
 
     expect(wrapperImageSource.props().src).toBe(imageSource);
     expect(wrapperTitle.text()).toBe(title);
-    expect(link.props().href).toBe(`selectTeams`);
+    expect(link.props().href).toBe(`/selectTeams`);
   });
 });

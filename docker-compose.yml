@@ -8,11 +8,13 @@ services:
     image: melihcatal/client
     environment:
       DATABASE_URL: ${DATABASE_URL}
+      REACT_APP_FIELD_BACK_COEF : 0.5
     ports:
       - 3000:3000
     depends_on: 
       - searchservice  
       - playerservice
+      - compareteamservice
   searchservice:
     build: 
       context: src/searchService
@@ -37,6 +39,19 @@ services:
       - 3002:3000
     depends_on: 
       - mongo
+  compareteamservice:
+    build:
+      context: src/compareTeamService
+      dockerfile: ./Dockerfile 
+    image: melihcatal/compareteamservice 
+    environment: 
+      MONGO_IP: ${MONGO_IP}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      FIELD_BACK_COEF : ${FIELD_BACK_COEF}
+    ports:
+      - 3003:3000
+    depends_on: 
+      - mongo  
   mongo:
     image: mongo
     ports:
@@ -53,7 +68,8 @@ services:
       - client
       - playerservice
       - searchservice
-      - mongo      
+      - mongo 
+      - compareteamservice     
 volumes:
   mongo-data:
     driver: local

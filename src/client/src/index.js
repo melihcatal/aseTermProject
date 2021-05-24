@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Router, Switch } from "react-router-dom";
+import ComparePopup from "./ comparePopup/ComparePopup";
 import App from "./App";
+import CompareTeams from "./compareTeamsComponent/CompareTeams";
 import FieldComponent from "./fieldComponent/FieldComponent";
 import HeaderComponent from "./headerComponent/HeaderComponent";
 import history from "./history";
@@ -16,6 +18,8 @@ ReactDOM.render(
       <Route path="/" exact component={App}></Route>
       <Route path="/players/:id" exact component={PlayerComponent}></Route>
       <Route path="/selectTeams" exact component={SelectTeamComponent}></Route>
+      <Route path="/compareTeams" exact component={CompareTeams}></Route>
+
       <Route
         path="/selectPlayers"
         exact

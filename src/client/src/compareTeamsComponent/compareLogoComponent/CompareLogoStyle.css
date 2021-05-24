@@ -1,0 +1,26 @@
+#CompareLogoDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 2%;
+}
+
+#CompareLogoDiv div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#CompareLogoDiv img {
+  width: 80%;
+  padding: 1%;
+}
+
+#CompareLogoDiv h4 {
+  font-family: "Ubuntu", sans-serif;
+}
