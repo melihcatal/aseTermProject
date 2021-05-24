@@ -1,0 +1,53 @@
+name: compareTeamService
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ,develop]
+
+env:
+  IMAGE_NAME: 'melihcatal/compareteamservice'
+  MONGOMS_ARCH: x64
+  MONGO_DATABASE: 'fifa'
+  FIELD_BACK_COEF : 2.47
+
+
+
+jobs:
+  test:
+    defaults:
+      run:
+        working-directory: ./src/compareTeamService
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '15.x'
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm run test
+      
+  push:
+    needs: test
+
+    runs-on: ubuntu-latest
+    
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push image to Dockerhub
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: ${{env.IMAGE_NAME}}
+          registry: docker.io
+          tags: latest
+          directory: ./src/playerService
+          dockerfile: ./src/playerService/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}

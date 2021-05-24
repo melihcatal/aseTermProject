@@ -1,4 +1,4 @@
-#positionItemDiv {
+.positionItemDiv {
   text-align: center;
   flex-direction: column;
   margin-top: 10%;
@@ -8,12 +8,36 @@
   height: 40px;
   padding: 4%;
 }
-#positionItemDiv h4 {
+.positionItemDiv h4 {
   display: block;
   margin-top: -1%;
   margin-bottom: -10%;
 }
-#positionItemDiv h3 {
+.positionItemDiv h3 {
   display: block;
   color: white;
+}
+#compareFieldItemDiv {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  margin: 30%;
+  cursor: pointer;
+}
+#compareFieldItemDiv img {
+  width: 100%;
+}
+
+#compareFieldItemDiv div {
+  margin-top: 5%;
+  font-size: 12px;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }

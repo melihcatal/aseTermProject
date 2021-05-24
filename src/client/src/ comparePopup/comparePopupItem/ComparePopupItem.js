@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ComparePopupItemStyle.css";
 
 function ComparePopupItem(props) {
-  const hrefLink = props.title == "Clubs" ? "selectTeams" : "selectPlayers";
+  const hrefLink = props.title == "Clubs" ? "/selectTeams" : "/selectPlayers";
   return (
     <a href={hrefLink} id="comparePopupItemDiv">
       <img src={props.imageSource} />

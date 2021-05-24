@@ -5,5 +5,5 @@ const port = 3000;
 app.use(cors());
 
 app.listen(port, () => {
-  console.log(`player serviced at http://localhost:${port}`);
+  console.log(`compare team serviced at http://localhost:${port}`);
 });
