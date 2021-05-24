@@ -14,10 +14,7 @@ function CustomChart(props) {
 
   return (
     <div className="customChartDiv" id={props.id || "customChartDiv"}>
-      <Chart
-        data={props.chartInfo.data}
-        options={props.chartInfo.options || {}}
-      />
+      <Chart data={props.chartInfo.data} options={props.options || {}} />
     </div>
   );
 }

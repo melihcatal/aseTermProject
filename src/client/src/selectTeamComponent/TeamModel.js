@@ -10,7 +10,9 @@ Modal.setAppElement(document.getElementById("anan"));
 function TeamModel(props) {
   async function getData(searchText) {
     const endPoint = props.isTeam ? "searchTeam" : "searchPlayer";
-    const url = `http://localhost:3001/${endPoint}/${searchText}`;
+    //const url = `http://localhost:3001/${endPoint}/${searchText}`;
+    const url = `/${endPoint}/${searchText}`;
+
     try {
       if (searchText != "") {
         const result = await axios.get(url);

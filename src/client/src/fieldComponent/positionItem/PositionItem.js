@@ -2,6 +2,7 @@ import React from "react";
 import "./PositionItemStyle.css";
 
 function PositionItem(props) {
+  //console.log("poisiton item => " + JSON.stringify(props, null, 2));
   return (
     <div
       style={{
@@ -10,7 +11,7 @@ function PositionItem(props) {
         )},52)`,
         zIndex: 4,
       }}
-      id={"positionItemDiv"}
+      className={"positionItemDiv"}
     >
       <h4>{props.info.position}</h4>
       <h3>{props.info.score}</h3>

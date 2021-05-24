@@ -11,6 +11,7 @@
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.6",
         "jsonschema": "^1.4.0",
+        "query-string": "^4.3.4",
         "react": "^16.0.0",
         "react-chartjs-2": "^3.0.3",
         "react-dom": "^16.0.0",
