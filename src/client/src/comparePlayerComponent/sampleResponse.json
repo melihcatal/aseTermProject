@@ -1,0 +1,781 @@
+{
+    "historicalData": [
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            64,
+                            68
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            92,
+                            93,
+                            94,
+                            94,
+                            94,
+                            93,
+                            92
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Overall"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            87,
+                            86,
+                            87,
+                            88,
+                            87,
+                            87,
+                            87
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            52,
+                            58
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Attacking"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            56,
+                            59
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            85,
+                            84,
+                            83,
+                            84,
+                            83,
+                            83,
+                            83
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Skill"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            86,
+                            86,
+                            86,
+                            86,
+                            87,
+                            87,
+                            86
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            68,
+                            70
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Movement"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            90,
+                            89,
+                            91,
+                            91,
+                            90,
+                            89,
+                            89
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            59,
+                            66
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Power"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            69,
+                            70,
+                            71,
+                            71,
+                            71,
+                            71,
+                            71
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            56,
+                            62
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Mentality"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            49,
+                            63
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            29,
+                            29,
+                            29,
+                            29,
+                            30,
+                            30,
+                            30
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Defending"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            10,
+                            10
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            12,
+                            12,
+                            12,
+                            12,
+                            12,
+                            12,
+                            12
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    }
+                ],
+                "labels": [
+                    2020,
+                    2021
+                ]
+            },
+            "type": "line",
+            "options": {
+                "plugins": {
+                    "legend": {
+                        "position": "bottom"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "GoalKeeping"
+                    }
+                }
+            }
+        }
+    ],
+    "homePosition": [
+        [
+            {
+                "gk": 7
+            }
+        ],
+        [
+            {
+                "lb": 66,
+                "lcb": 65,
+                "cb": 65,
+                "rcb": 65,
+                "rb": 66
+            }
+        ],
+        [
+            {
+                "lwb": 67,
+                "ldm": 67,
+                "cdm": 67,
+                "rdm": 67,
+                "rwb": 67
+            }
+        ],
+        [
+            {
+                "lm": 68,
+                "lcm": 69,
+                "cm": 69,
+                "rcm": 69,
+                "rm": 68
+            }
+        ],
+        [
+            {
+                "lam": 68,
+                "cam": 68,
+                "ram": 68
+            }
+        ],
+        [
+            {
+                "lw": 67,
+                "lf": 67,
+                "cf": 67,
+                "rf": 67,
+                "rw": 67
+            }
+        ],
+        [
+            {
+                "ls": 65,
+                "st": 65,
+                "rs": 65
+            }
+        ]
+    ],
+    "awayPosition": [
+        [
+            {
+                "gk": 11
+            }
+        ],
+        [
+            {
+                "lb": 61,
+                "lcb": 54,
+                "cb": 54,
+                "rcb": 54,
+                "rb": 61
+            }
+        ],
+        [
+            {
+                "lwb": 65,
+                "ldm": 61,
+                "cdm": 61,
+                "rdm": 61,
+                "rwb": 65
+            }
+        ],
+        [
+            {
+                "lm": 88,
+                "lcm": 81,
+                "cm": 81,
+                "rcm": 81,
+                "rm": 88
+            }
+        ],
+        [
+            {
+                "lam": 88,
+                "cam": 88,
+                "ram": 88
+            }
+        ],
+        [
+            {
+                "lw": 89,
+                "lf": 91,
+                "cf": 91,
+                "rf": 91,
+                "rw": 89
+            }
+        ],
+        [
+            {
+                "ls": 91,
+                "st": 91,
+                "rs": 91
+            }
+        ]
+    ],
+    "radarData": [
+        {
+            "data": {
+                "labels": [
+                    "Pace",
+                    "Shooting",
+                    "Passing",
+                    "Dribbling",
+                    "Defending",
+                    "Physic"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            70,
+                            56,
+                            66,
+                            69,
+                            65,
+                            68
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            89,
+                            93,
+                            81,
+                            89,
+                            35,
+                            77
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Crossing",
+                    "Finishing",
+                    "Heading",
+                    "Short Passing",
+                    "Volleys"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            61,
+                            54,
+                            66,
+                            72,
+                            39
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            84,
+                            95,
+                            90,
+                            82,
+                            86
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Dribbling",
+                    "Curve",
+                    "FK Accuracy",
+                    "Long Passing",
+                    "Ball Control"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            69,
+                            45,
+                            41,
+                            71,
+                            69
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            88,
+                            81,
+                            76,
+                            77,
+                            92
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Acceleration",
+                    "Sprint",
+                    "Agility",
+                    "Reactions",
+                    "Balance"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            72,
+                            69,
+                            71,
+                            68,
+                            69
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            87,
+                            91,
+                            87,
+                            95,
+                            71
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Shot Power",
+                    "Jumping",
+                    "Stamina",
+                    "Strength",
+                    "Long Shots"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            63,
+                            70,
+                            73,
+                            70,
+                            56
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            94,
+                            95,
+                            84,
+                            78,
+                            93
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Aggression",
+                    "Interceptions",
+                    "Positioning",
+                    "Vision",
+                    "Penalties"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            55,
+                            65,
+                            69,
+                            70,
+                            49
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            63,
+                            29,
+                            95,
+                            82,
+                            84
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Marking",
+                    "Standing Tackle",
+                    "Sliding Tackle"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            65,
+                            62,
+                            62
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            35,
+                            32,
+                            24
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        },
+        {
+            "data": {
+                "labels": [
+                    "Diving",
+                    "Handling",
+                    "Kicking",
+                    "Positioning",
+                    "Reflexes"
+                ],
+                "datasets": [
+                    {
+                        "label": "B. Özdemir",
+                        "data": [
+                            13,
+                            15,
+                            9,
+                            8,
+                            7
+                        ],
+                        "backgroundColor": "rgba(130,38,23,0.3)"
+                    },
+                    {
+                        "label": "Cristiano Ronaldo",
+                        "data": [
+                            7,
+                            11,
+                            15,
+                            14,
+                            11
+                        ],
+                        "backgroundColor": "rgba(147,138,124,0.3)"
+                    }
+                ]
+            },
+            "type": "radar"
+        }
+    ],
+    "playerInfo": [
+        {
+            "_id": "60a79aca6b148a03fb95c100",
+            "short_name": "Cristiano Ronaldo",
+            "age": 35,
+            "height_cm": 187,
+            "weight_kg": 83,
+            "nationality": "Portugal",
+            "club": "Juventus",
+            "overall": 92,
+            "player_positions": "ST, LW",
+            "clubLogo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Juventus.png",
+            "countryFlag": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/Italy.png",
+            "playerImage": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/20801.png",
+            "backgroundColor": "rgba(147,138,124,0.3)"
+        },
+        {
+            "_id": "60a79acc6b148a03fb95daa4",
+            "short_name": "B. Özdemir",
+            "age": 22,
+            "height_cm": 183,
+            "weight_kg": 74,
+            "nationality": "Turkey",
+            "club": "Gençlerbirliği SK",
+            "overall": 68,
+            "player_positions": "CDM, CM",
+            "clubLogo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Gençlerbirliği+SK.png",
+            "countryFlag": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/Turkey.png",
+            "playerImage": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/players21/248854.png",
+            "backgroundColor": "rgba(130,38,23,0.3)"
+        }
+    ]
+}

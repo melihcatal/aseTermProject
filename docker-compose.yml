@@ -15,6 +15,7 @@ services:
       - searchservice  
       - playerservice
       - compareteamservice
+      - compareplayerservice
   searchservice:
     build: 
       context: src/searchService
@@ -52,6 +53,19 @@ services:
       - 3003:3000
     depends_on: 
       - mongo  
+  compareplayerservice:
+    build:
+      context: src/comparePlayerService
+      dockerfile: ./Dockerfile
+    image: melihcatal/compareplayerservice    
+    environment: 
+      MONGO_IP: ${MONGO_IP}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      FIELD_BACK_COEF : ${FIELD_BACK_COEF}
+    ports:
+      - 3004:3000
+    depends_on: 
+      - mongo
   mongo:
     image: mongo
     ports:
@@ -69,7 +83,8 @@ services:
       - playerservice
       - searchservice
       - mongo 
-      - compareteamservice     
+      - compareteamservice  
+      - compareplayerservice   
 volumes:
   mongo-data:
     driver: local

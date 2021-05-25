@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import TeamItem from "../selectTeamComponent/teamItem/TeamItem";
 import TeamModel from "../selectTeamComponent/TeamModel";
 
@@ -8,7 +9,8 @@ function SelectPlayerComponent(props) {
   const [team1Image, setTeam1Image] = useState(null);
   const [team1Name, setTeam1Name] = useState(null);
   const [team2Name, setTeam2Name] = useState(null);
-
+  const [homePlayerID, setHomePlayerID] = useState(null);
+  const [awayPlayerID, setAwayPlayerID] = useState(null);
   const [team2Image, setTeam2Image] = useState(null);
   const [isClicked, setClicked] = useState(false);
   const [turn, setTurn] = useState(null);
@@ -25,7 +27,6 @@ function SelectPlayerComponent(props) {
         turn="1"
         isTeam={false}
       />
-
       <TeamItem
         setSelected={setTeam2Selected}
         setClicked={setClicked}
@@ -41,11 +42,24 @@ function SelectPlayerComponent(props) {
         setImage={turn == "1" ? setTeam1Image : setTeam2Image}
         closeModel={setClicked}
         setName={turn == "1" ? setTeam1Name : setTeam2Name}
+        setID={turn == "1" ? setHomePlayerID : setAwayPlayerID}
         title={"Search Player"}
         isTeam={false}
       />
-
-      <button>Compare</button>
+      <Link
+        to={{
+          pathname: "/comparePlayers",
+          search: `?homePlayer=${team1Name}&awayPlayer=${team2Name}`,
+          state: {
+            homeLogo: team1Image,
+            awayLogo: team2Image,
+            homePlayerID: homePlayerID,
+            awayPlayerID: awayPlayerID,
+          },
+        }}
+      >
+        Compare
+      </Link>
     </div>
   );
 }
