@@ -10,7 +10,8 @@ function SelectTeamComponent(props) {
   const [team1Image, setTeam1Image] = useState(null);
   const [team1Name, setTeam1Name] = useState(null);
   const [team2Name, setTeam2Name] = useState(null);
-
+  const [team1ID, setTeam1ID] = useState(null);
+  const [team2ID, setTeam2ID] = useState(null);
   const [team2Image, setTeam2Image] = useState(null);
   const [isClicked, setClicked] = useState(false);
   const [turn, setTurn] = useState(null);
@@ -45,6 +46,7 @@ function SelectTeamComponent(props) {
         setName={turn == "1" ? setTeam1Name : setTeam2Name}
         isTeam={true}
         title={"Search Team"}
+        setID={turn == "1" ? setTeam1ID : setTeam2ID}
       />
 
       <Link

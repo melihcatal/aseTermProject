@@ -15,7 +15,7 @@ function PlayerCharts(props) {
             <CustomChart
               id={props.id ? "lineChart" : null}
               chartInfo={chartInfo}
-              options={props.options || null}
+              options={chartInfo.options || null}
             />
           );
           tempArray.push(currentChart);
@@ -25,6 +25,7 @@ function PlayerCharts(props) {
         throw "Error";
       }
     } catch (error) {
+      console.log(error);
       setWarning(true);
     }
   }, []);
