@@ -10,8 +10,8 @@ Modal.setAppElement(document.getElementById("anan"));
 function TeamModel(props) {
   async function getData(searchText) {
     const endPoint = props.isTeam ? "searchTeam" : "searchPlayer";
-    //const url = `http://localhost:3001/${endPoint}/${searchText}`;
-    const url = `/${endPoint}/${searchText}`;
+    const url = `http://localhost:3001/${endPoint}/${searchText}`;
+    //const url = `/${endPoint}/${searchText}`;
 
     try {
       if (searchText != "") {
@@ -34,6 +34,8 @@ function TeamModel(props) {
   function itemSelected(id, image, name) {
     props.setImage(image);
     props.setName(name);
+    props.setID(id);
+
     props.closeModel(false);
   }
 
