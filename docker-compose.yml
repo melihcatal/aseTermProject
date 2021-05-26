@@ -16,6 +16,7 @@ services:
       - playerservice
       - compareteamservice
       - compareplayerservice
+      - gameservice
   searchservice:
     build: 
       context: src/searchService
@@ -66,6 +67,22 @@ services:
       - 3004:3000
     depends_on: 
       - mongo
+  gameservice:
+    build:
+      context: src/gameService 
+      dockerfile: ./Dockerfile 
+    image: melihcatal/gameservice
+    environment: 
+      MONGO_IP: ${MONGO_IP}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+      FIELD_BACK_COEF: ${FIELD_BACK_COEF}
+      FOOTBALL_API_KEY: ${FOOTBALL_API_KEY}
+      FOOTBALL_API_HOST: ${FOOTBALL_API_HOST}
+      FOOTBALL_API_TIMEZONE: ${FOOTBALL_API_TIMEZONE}
+    ports: 
+      - 3005:3000
+    depends_on: 
+      - mongo  
   mongo:
     image: mongo
     ports:
@@ -84,7 +101,8 @@ services:
       - searchservice
       - mongo 
       - compareteamservice  
-      - compareplayerservice   
+      - compareplayerservice
+      - gameservice
 volumes:
   mongo-data:
     driver: local
