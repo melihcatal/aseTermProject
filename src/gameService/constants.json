@@ -1,0 +1,151 @@
+{
+  "leagues": [
+    {
+      "leagueName": "Premier League",
+      "leagueID": 39,
+      "country": "England"
+    },
+    {
+      "leagueName": "Super Lig",
+      "leagueID": 203,
+      "country": "Turkey"
+    },
+    {
+      "leagueName": "Bundesliga 1",
+      "leagueID": 78,
+      "country": "Germany"
+    },
+    {
+      "leagueName": "Super League",
+      "leagueID": 207,
+      "country": "Switzerland"
+    },
+    {
+      "leagueName": "Ligue 1",
+      "leagueID": 61,
+      "country": "France"
+    },
+    {
+      "leagueName": "Primera Division",
+      "leagueID": 140,
+      "country": "Spain"
+    },
+    {
+      "leagueName": "Serie A",
+      "leagueID": 135,
+      "country": "Italy"
+    },
+    {
+      "leagueName": "Eliteserien",
+      "leagueID": 103,
+      "country": "Norway"
+    },
+    {
+      "leagueName": "Ekstraklasa",
+      "leagueID": 106,
+      "country": "Poland"
+    },
+
+    {
+      "leagueName": "Primera Division",
+      "leagueID": 265,
+      "country": "Chile"
+    },
+    {
+      "leagueName": "Jupiler Pro League",
+      "leagueID": 144,
+      "country": "Belgium"
+    },
+    {
+      "leagueName": "J. League Div.1",
+      "leagueID": 98,
+      "country": "Japan"
+    },  
+      {
+      "leagueName": "Tipp3 Bundesliga",
+      "leagueID": 218,
+      "country": "Austria"
+    },
+    {
+      "leagueName": "Super League",
+      "leagueID": 169,
+      "country": "China"
+    },
+    {
+      "leagueName": "Primera Division",
+      "leagueID": 128,
+      "country": "Argentina"
+    },
+    {
+      "leagueName": "Primera A",
+      "leagueID": 239,
+      "country": "Colombia"
+    }, 
+    {
+      "leagueName": "Premier League",
+      "leagueID": 235,
+      "country": "Russia"
+    },
+    {
+      "leagueName": "Superligaen",
+      "leagueID": 119,
+      "country": "Denmark"
+    },
+    {
+      "leagueName": "Pro League",
+      "leagueID": 307,
+      "country": "Saudi Arabia"
+    },
+    {
+      "leagueName": "A-League",
+      "leagueID": 188,
+      "country": "Australia"
+    },
+    {
+      "leagueName": "Premier Division",
+      "leagueID": 357,
+      "country": "Ireland"
+    },
+    {
+      "leagueName": "Primeira Liga",
+      "leagueID": 94,
+      "country": "Portugal"
+    },
+    {
+      "leagueName": "Liga MX",
+      "leagueID": 262,
+      "country": "Mexico"
+    },
+    {
+      "leagueName": "Liga I",
+      "leagueID": 283,
+      "country": "Romania"
+    },
+    {
+      "leagueName": "Eredivisie",
+      "leagueID": 88,
+      "country": "Netherlands"
+    },
+    {
+      "leagueName": "Allsvenskan",
+      "leagueID": 113,
+      "country": "Sweden"
+    },
+    {
+      "leagueName": "Premiership",
+      "leagueID": 179,
+      "country": "Scotland"
+    },
+    {
+      "leagueName": "Serie A",
+      "leagueID": 71,
+      "country": "Brazil"
+    },
+    {
+      "leagueName": "Major League Soccer",
+      "leagueID": 253,
+      "country": "USA"
+    }
+  ]
+ 
+}
