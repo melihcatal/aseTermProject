@@ -4,6 +4,8 @@ const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 const constants = require("./constants.json");
+//const constants = require("./constants_dev.json");
+
 const axios = require("axios");
 
 app.use(cors());
@@ -99,7 +101,7 @@ function getFixtures(fromDate, toDate) {
       constants.leagues.map((currentLeague) => {
         const params = {
           league: currentLeague.leagueID,
-          season: 2021,
+          season: 2020,
           from: fromDate,
           to: toDate,
           timezone: process.env.FOOTBALL_API_TIMEZONE,
@@ -119,66 +121,124 @@ function getFixtures(fromDate, toDate) {
         })
       );
 
-      //   //const result = paramsList.length;
-      //   const result = await Promise.all(requests);
-      //   let responses = result.map((currentResult) => currentResult.data);
-      resolve(requests.length.toString());
+      const result = await Promise.all(requests);
+      let responses = result.map((currentResult) =>
+        currentResult.data.results > 0 ? currentResult.data.response : null
+      );
+      responses = responses.filter((n) => n);
+
+      resolve(responses);
     } catch (error) {
       reject(error);
     }
   });
 }
-app.get("/test", async (req, res) => {
-  const agg = [
-    {
-      $group: {
-        _id: "$countryName",
-        clubs: {
-          $addToSet: "$clubName",
-        },
-      },
-    },
-    {
-      $project: {
-        count: {
-          $size: "$clubs",
-        },
-        isBig: {
-          $gt: [
-            {
-              $size: "$clubs",
-            },
-            10,
-          ],
-        },
-      },
-    },
-    {
-      $group: {
-        _id: "$isBig",
-        countries: {
-          $addToSet: "$_id",
-        },
-      },
-    },
-    {
-      $match: {
-        _id: true,
-      },
-    },
-    {
-      $project: {
-        _id: 0,
-      },
-    },
-  ];
 
-  const fromDate = req.query.fromDate;
-  const toDate = req.query.toDate;
+function getTeamID(teamName, countryName) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log("team => " + teamName + " c " + countryName);
+      const match = {
+        clubName: new RegExp(teamName, "i"),
+        countryName: new RegExp(countryName, "i"),
+      };
+      const project = {
+        _id: 1,
+      };
 
-  const results = await getFixtures(fromDate, toDate);
-  res.send(results);
+      const aggregation = [
+        { $match: match },
+        { $project: project },
+        { $limit: 1 },
+      ];
+
+      const collectionName = "teams";
+      const result = await getData(collectionName, aggregation);
+
+      if (result.length > 0) {
+        resolve(result[0]._id);
+      } else {
+        throw "Not Found ID";
+      }
+    } catch (error) {
+      resolve(null);
+    }
+  });
+}
+
+function createResponse(response) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const leagueInfo = response[0].league;
+
+      let games = [];
+
+      await Promise.all(
+        response.map(async (currentGame) => {
+          const gameID = currentGame.fixture.id;
+          const gameDate = currentGame.fixture.date;
+          const gameStatus = currentGame.fixture.status.short;
+          const homeTeam = currentGame.teams.home;
+          const awayTeam = currentGame.teams.away;
+          const gameScore =
+            currentGame.goals.home + "-" + currentGame.goals.away;
+
+          const homeTeamID = await getTeamID(homeTeam.name, leagueInfo.country);
+          const awayTeamID = await getTeamID(awayTeam.name, leagueInfo.country);
+          if (homeTeamID != null && awayTeamID != null) {
+            homeTeam.id = homeTeamID;
+            awayTeam.id = awayTeamID;
+
+            const currentGameData = {
+              gameID: gameID,
+              gameDate: gameDate,
+              gameStatus: gameStatus,
+              homeTeam: homeTeam,
+              awayTeam: awayTeam,
+              gameScore: gameScore,
+            };
+
+            games.push(currentGameData);
+          }
+        })
+      );
+
+      const league = {
+        leagueInfo: leagueInfo,
+        games: games,
+      };
+
+      resolve(league);
+    } catch (error) {
+      resolve("Not Found ıd");
+    }
+  });
+}
+app.get("/getFixtures", async (req, res) => {
+  try {
+    const fromDate = req.query.fromDate;
+    const toDate = req.query.toDate;
+
+    const results = await getFixtures(fromDate, toDate);
+
+    let requests = results.map((currentResult) =>
+      createResponse(currentResult)
+    );
+
+    const response = await Promise.all(requests);
+
+    res.status(200).send(results);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
+
 module.exports = {
   app: app,
+  databaseExist: databaseExist,
+  connectDatabase: connectDatabase,
+  getData: getData,
+  getFixtures: getFixtures,
+  getTeamID: getTeamID,
+  createResponse: createResponse,
 };

@@ -1,0 +1,15 @@
+[{
+  "_id":"60a0f8c72f6bf50887fa3363",
+  "clubName": "Liverpool",
+  "leagueName": "English Premier League",
+  "countryName": "England",
+  "clubLogo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Liverpool.png",
+  "countryFlag": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/England.png"
+},{
+  "_id": "60a0f8c72f6bf50887fa3438",
+  "clubName": "Trabzonspor",
+  "leagueName": "Turkish Süper Lig",
+  "countryName": "Turkey",
+  "clubLogo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Trabzonspor.png",
+  "countryFlag": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/Turkey.png"
+}]

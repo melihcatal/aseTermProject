@@ -1,0 +1,15 @@
+{
+  "leagues": [
+    {
+      "leagueName": "Premier League",
+      "leagueID": 39,
+      "country": "England"
+    },
+    {
+      "leagueName": "Super Lig",
+      "leagueID": 203,
+      "country": "Turkey"
+    }
+  ]
+ 
+}
