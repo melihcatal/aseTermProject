@@ -1,0 +1,54 @@
+name: gameService
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ,develop]
+
+env:
+  IMAGE_NAME: 'melihcatal/gameservice'
+  MONGOMS_ARCH: x64
+  MONGO_DATABASE: 'fifa'
+  FOOTBALL_API_KEY : ${{ secrets.FOOTBALL_API_KEY }}
+  FOOTBALL_API_HOST : ${{ secrets.FOOTBALL_API_HOST }}
+  FOOTBALL_API_TIMEZONE : Europe/Zurich
+
+
+jobs:
+  test:
+    defaults:
+      run:
+        working-directory: ./src/gameService
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '15.x'
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm run test
+      
+  push:
+    needs: test
+
+    runs-on: ubuntu-latest
+    
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push image to Dockerhub
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: ${{env.IMAGE_NAME}}
+          registry: docker.io
+          tags: latest
+          directory: ./src/searchService
+          dockerfile: ./src/searchService/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
