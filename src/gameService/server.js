@@ -137,7 +137,6 @@ function getFixtures(fromDate, toDate) {
 function getTeamID(teamName, countryName) {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("team => " + teamName + " c " + countryName);
       const match = {
         clubName: new RegExp(teamName, "i"),
         countryName: new RegExp(countryName, "i"),
