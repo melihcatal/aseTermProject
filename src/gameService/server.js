@@ -3,7 +3,9 @@ const cors = require("cors");
 const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
-const constants = require("./constants.json");
+const constants = require(process.env.isDev
+  ? "./constants_dev.json"
+  : "./constants.json");
 //const constants = require("./constants_dev.json");
 
 const axios = require("axios");
