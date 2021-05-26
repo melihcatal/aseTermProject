@@ -13,6 +13,7 @@ env:
   FOOTBALL_API_KEY : ${{ secrets.FOOTBALL_API_KEY }}
   FOOTBALL_API_HOST : ${{ secrets.FOOTBALL_API_HOST }}
   FOOTBALL_API_TIMEZONE : Europe/Zurich
+  isDev: true
 
 
 jobs:
