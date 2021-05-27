@@ -1,0 +1,680 @@
+[
+    {
+        "leagueInfo": {
+            "id": 203,
+            "name": "Super Lig",
+            "country": "Turkey",
+            "logo": "https://media.api-sports.io/football/leagues/203.png",
+            "flag": "https://media.api-sports.io/flags/tr.svg",
+            "season": 2020,
+            "round": "Regular Season - 40"
+        },
+        "games": [
+            {
+                "gameID": 599300,
+                "gameDate": "2021-05-08T19:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa34e2",
+                    "name": "Hatayspor",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Hatayspor.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa35ce",
+                    "name": "Denizlispor",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Denizlispor.png",
+                    "winner": false
+                },
+                "gameScore": "1-0"
+            },
+            {
+                "gameID": 599304,
+                "gameDate": "2021-05-08T19:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3438",
+                    "name": "Trabzonspor",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Trabzonspor.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3557",
+                    "name": "Antalyaspor",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Antalyaspor.png",
+                    "winner": false
+                },
+                "gameScore": "2-1"
+            },
+            {
+                "gameID": 599298,
+                "gameDate": "2021-05-08T19:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3532",
+                    "name": "Kayserispor",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Kayserispor.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa359a",
+                    "name": "Gazişehir Gaziantep F.K.",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Gazişehir+Gaziantep+F.K..png",
+                    "winner": null
+                },
+                "gameScore": "0-0"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020,
+            "round": "Regular Season - 35"
+        },
+        "games": [
+            {
+                "gameID": 592839,
+                "gameDate": "2021-05-08T13:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3371",
+                    "name": "Leeds United",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Leeds+United.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3367",
+                    "name": "Tottenham Hotspur",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Tottenham+Hotspur.png",
+                    "winner": false
+                },
+                "gameScore": "3-1"
+            },
+            {
+                "gameID": 592842,
+                "gameDate": "2021-05-08T18:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa335f",
+                    "name": "Manchester City",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Manchester+City.png",
+                    "winner": false
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa335a",
+                    "name": "Chelsea",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Chelsea.png",
+                    "winner": true
+                },
+                "gameScore": "1-2"
+            },
+            {
+                "gameID": 592841,
+                "gameDate": "2021-05-08T21:15:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3363",
+                    "name": "Liverpool",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Liverpool.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3395",
+                    "name": "Southampton",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Southampton.png",
+                    "winner": false
+                },
+                "gameScore": "2-0"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 78,
+            "name": "Bundesliga 1",
+            "country": "Germany",
+            "logo": "https://media.api-sports.io/football/leagues/78.png",
+            "flag": "https://media.api-sports.io/flags/de.svg",
+            "season": 2020,
+            "round": "Regular Season - 32"
+        },
+        "games": [
+            {
+                "gameID": 587458,
+                "gameDate": "2021-05-08T15:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa339a",
+                    "name": "VfL Wolfsburg",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/VfL+Wolfsburg.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa33c9",
+                    "name": "1. FC Union Berlin",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/1.+FC+Union+Berlin.png",
+                    "winner": false
+                },
+                "gameScore": "3-0"
+            },
+            {
+                "gameID": 587457,
+                "gameDate": "2021-05-08T15:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa33ad",
+                    "name": "TSG 1899 Hoffenheim",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/TSG+1899+Hoffenheim.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa337e",
+                    "name": "FC Schalke 04",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Schalke+04.png",
+                    "winner": false
+                },
+                "gameScore": "4-2"
+            },
+            {
+                "gameID": 587456,
+                "gameDate": "2021-05-08T15:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3364",
+                    "name": "Borussia Dortmund",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Borussia+Dortmund.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3374",
+                    "name": "RB Leipzig",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/RB+Leipzig.png",
+                    "winner": false
+                },
+                "gameScore": "3-2"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 207,
+            "name": "Super League",
+            "country": "Switzerland",
+            "logo": "https://media.api-sports.io/football/leagues/207.png",
+            "flag": "https://media.api-sports.io/flags/ch.svg",
+            "season": 2020,
+            "round": "Regular Season - 33"
+        },
+        "games": [
+            {
+                "gameID": 657958,
+                "gameDate": "2021-05-08T20:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3487",
+                    "name": "BSC Young Boys",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/BSC+Young+Boys.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa342e",
+                    "name": "FC Basel 1893",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Basel+1893.png",
+                    "winner": false
+                },
+                "gameScore": "2-0"
+            },
+            {
+                "gameID": 657955,
+                "gameDate": "2021-05-08T18:15:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa355a",
+                    "name": "FC Lugano",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Lugano.png",
+                    "winner": false
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa352d",
+                    "name": "FC Vaduz",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Vaduz.png",
+                    "winner": true
+                },
+                "gameScore": "0-2"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 61,
+            "name": "Ligue 1",
+            "country": "France",
+            "logo": "https://media.api-sports.io/football/leagues/61.png",
+            "flag": "https://media.api-sports.io/flags/fr.svg",
+            "season": 2020,
+            "round": "Regular Season - 36"
+        },
+        "games": [
+            {
+                "gameID": 571823,
+                "gameDate": "2021-05-08T17:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa337a",
+                    "name": "Olympique Lyonnais",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Olympique+Lyonnais.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3419",
+                    "name": "FC Lorient",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Lorient.png",
+                    "winner": false
+                },
+                "gameScore": "4-1"
+            },
+            {
+                "gameID": 571826,
+                "gameDate": "2021-05-08T13:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3415",
+                    "name": "FC Nantes",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Nantes.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa33d0",
+                    "name": "FC Girondins de Bordeaux",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Girondins+de+Bordeaux.png",
+                    "winner": false
+                },
+                "gameScore": "3-0"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 140,
+            "name": "Primera Division",
+            "country": "Spain",
+            "logo": "https://media.api-sports.io/football/leagues/140.png",
+            "flag": "https://media.api-sports.io/flags/es.svg",
+            "season": 2020,
+            "round": "Regular Season - 35"
+        },
+        "games": [
+            {
+                "gameID": 605406,
+                "gameDate": "2021-05-08T21:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3398",
+                    "name": "Athletic Club de Bilbao",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Athletic+Club+de+Bilbao.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3413",
+                    "name": "CA Osasuna",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/CA+Osasuna.png",
+                    "winner": null
+                },
+                "gameScore": "2-2"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 135,
+            "name": "Serie A",
+            "country": "Italy",
+            "logo": "https://media.api-sports.io/football/leagues/135.png",
+            "flag": "https://media.api-sports.io/flags/it.svg",
+            "season": 2020,
+            "round": "Regular Season - 35"
+        },
+        "games": [
+            {
+                "gameID": 608882,
+                "gameDate": "2021-05-08T18:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3365",
+                    "name": "Inter",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Inter.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa33e3",
+                    "name": "Sampdoria",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Sampdoria.png",
+                    "winner": false
+                },
+                "gameScore": "5-1"
+            },
+            {
+                "gameID": 608876,
+                "gameDate": "2021-05-08T15:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa33b1",
+                    "name": "Udinese",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Udinese.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa33c8",
+                    "name": "Bologna",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Bologna.png",
+                    "winner": null
+                },
+                "gameScore": "1-1"
+            },
+            {
+                "gameID": 608879,
+                "gameDate": "2021-05-08T20:45:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3394",
+                    "name": "Fiorentina",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Fiorentina.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa339b",
+                    "name": "Lazio",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Lazio.png",
+                    "winner": false
+                },
+                "gameScore": "2-0"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 106,
+            "name": "Ekstraklasa",
+            "country": "Poland",
+            "logo": "https://media.api-sports.io/football/leagues/106.png",
+            "flag": "https://media.api-sports.io/flags/pl.svg",
+            "season": 2020,
+            "round": "Regular Season - 29"
+        },
+        "games": []
+    },
+    {
+        "leagueInfo": {
+            "id": 144,
+            "name": "Jupiler Pro League",
+            "country": "Belgium",
+            "logo": "https://media.api-sports.io/football/leagues/144.png",
+            "flag": "https://media.api-sports.io/flags/be.svg",
+            "season": 2020,
+            "round": "Regular Season - 2"
+        },
+        "games": [
+            {
+                "gameID": 699408,
+                "gameDate": "2021-05-08T20:45:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa33d4",
+                    "name": "RSC Anderlecht",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/RSC+Anderlecht.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3463",
+                    "name": "Royal Antwerp FC",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Royal+Antwerp+FC.png",
+                    "winner": null
+                },
+                "gameScore": "2-2"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 218,
+            "name": "Tipp3 Bundesliga",
+            "country": "Austria",
+            "logo": "https://media.api-sports.io/football/leagues/218.png",
+            "flag": "https://media.api-sports.io/flags/at.svg",
+            "season": 2020,
+            "round": "Regular Season - 7"
+        },
+        "games": [
+            {
+                "gameID": 688131,
+                "gameDate": "2021-05-08T17:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa35cf",
+                    "name": "TSV Hartberg",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/TSV+Hartberg.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa360c",
+                    "name": "SV Ried",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/SV+Ried.png",
+                    "winner": null
+                },
+                "gameScore": "1-1"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 235,
+            "name": "Premier League",
+            "country": "Russia",
+            "logo": "https://media.api-sports.io/football/leagues/235.png",
+            "flag": "https://media.api-sports.io/flags/ru.svg",
+            "season": 2020,
+            "round": "Regular Season - 29"
+        },
+        "games": [
+            {
+                "gameID": 574326,
+                "gameDate": "2021-05-08T15:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa343d",
+                    "name": "Lokomotiv Moscow",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Lokomotiv+Moscow.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa364c",
+                    "name": "Dinamo Moscow",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Dinamo+Moscow.png",
+                    "winner": null
+                },
+                "gameScore": "0-0"
+            },
+            {
+                "gameID": 574323,
+                "gameDate": "2021-05-08T18:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa33d2",
+                    "name": "PFC CSKA Moscow",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/PFC+CSKA+Moscow.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa358d",
+                    "name": "FC Krasnodar",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Krasnodar.png",
+                    "winner": false
+                },
+                "gameScore": "3-1"
+            },
+            {
+                "gameID": 574329,
+                "gameDate": "2021-05-08T15:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3684",
+                    "name": "Arsenal Tula",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Arsenal+Tula.png",
+                    "winner": false
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa356e",
+                    "name": "Rubin Kazan",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Rubin+Kazan.png",
+                    "winner": true
+                },
+                "gameScore": "2-4"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 188,
+            "name": "A-League",
+            "country": "Australia",
+            "logo": "https://media.api-sports.io/football/leagues/188.png",
+            "flag": "https://media.api-sports.io/flags/au.svg",
+            "season": 2020,
+            "round": "Regular Season - 20"
+        },
+        "games": [
+            {
+                "gameID": 648459,
+                "gameDate": "2021-05-08T09:05:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3574",
+                    "name": "Newcastle Jets",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Newcastle+Jets.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3529",
+                    "name": "Sydney FC",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Sydney+FC.png",
+                    "winner": null
+                },
+                "gameScore": "1-1"
+            },
+            {
+                "gameID": 648313,
+                "gameDate": "2021-05-08T11:10:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3566",
+                    "name": "Western Sydney Wanderers",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Western+Sydney+Wanderers.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa3590",
+                    "name": "Western United FC",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Western+United+FC.png",
+                    "winner": false
+                },
+                "gameScore": "5-0"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 283,
+            "name": "Liga I",
+            "country": "Romania",
+            "logo": "https://media.api-sports.io/football/leagues/283.png",
+            "flag": "https://media.api-sports.io/flags/ro.svg",
+            "season": 2020,
+            "round": "Relegation Round - 7"
+        },
+        "games": []
+    },
+    {
+        "leagueInfo": {
+            "id": 88,
+            "name": "Eredivisie",
+            "country": "Netherlands",
+            "logo": "https://media.api-sports.io/football/leagues/88.png",
+            "flag": "https://media.api-sports.io/flags/nl.svg",
+            "season": 2020,
+            "round": "Regular Season - 32"
+        },
+        "games": [
+            {
+                "gameID": 573450,
+                "gameDate": "2021-05-08T18:45:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3461",
+                    "name": "SC Heerenveen",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/SC+Heerenveen.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa345c",
+                    "name": "FC Utrecht",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Utrecht.png",
+                    "winner": null
+                },
+                "gameScore": "0-0"
+            },
+            {
+                "gameID": 573443,
+                "gameDate": "2021-05-08T16:30:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa3444",
+                    "name": "FC Twente",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/FC+Twente.png",
+                    "winner": null
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa34bc",
+                    "name": "Heracles Almelo",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Heracles+Almelo.png",
+                    "winner": null
+                },
+                "gameScore": "1-1"
+            },
+            {
+                "gameID": 573445,
+                "gameDate": "2021-05-08T20:00:00+02:00",
+                "gameStatus": "FT",
+                "homeTeam": {
+                    "id": "60a0f8c72f6bf50887fa33c1",
+                    "name": "AZ Alkmaar",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/AZ+Alkmaar.png",
+                    "winner": true
+                },
+                "awayTeam": {
+                    "id": "60a0f8c72f6bf50887fa352e",
+                    "name": "Fortuna Sittard",
+                    "logo": "https://asefifaplayers.s3.eu-central-1.amazonaws.com/clubLogo/Fortuna+Sittard.png",
+                    "winner": false
+                },
+                "gameScore": "1-0"
+            }
+        ]
+    },
+    {
+        "leagueInfo": {
+            "id": 179,
+            "name": "Premiership",
+            "country": "Scotland",
+            "logo": "https://media.api-sports.io/football/leagues/179.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020,
+            "round": "Relegation Round"
+        },
+        "games": []
+    }
+]

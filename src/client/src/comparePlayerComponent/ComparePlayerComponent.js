@@ -6,6 +6,7 @@ import CustomChart from "../chartComponent/CustomChart";
 import FieldPlayersComponent from "../compareTeamsComponent/fieldPlayersComponent/FieldPlayersComponent";
 import FieldComponent from "../fieldComponent/FieldComponent";
 import ComparePlayerInfo from "./ComparePlayerInfo";
+import Loading from "../LoadingComponent/Loading";
 class ComparePlayerComponent extends Component {
   constructor(props) {
     super(props);
@@ -59,7 +60,7 @@ class ComparePlayerComponent extends Component {
             <PlayerCharts chartInfo={this.state.results.radarData} />
           </div>
         ) : (
-          <h3>Loading</h3>
+          <Loading />
         )}
       </div>
     );
