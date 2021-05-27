@@ -3,10 +3,10 @@ const cors = require("cors");
 const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
-const constants = require(process.env.isDev
-  ? "./constants_dev.json"
-  : "./constants.json");
-//const constants = require("./constants_dev.json");
+// const constants = require(process.env.isDev
+//   ? "./constants_dev.json"
+//   : "./constants.json");
+const constants = require("./constants.json");
 
 const axios = require("axios");
 
@@ -15,49 +15,52 @@ app.use(cors());
 require("dotenv").config({
   path: "../../.env",
 });
+let database;
 
-function databaseExist(databaseName) {
-  return new Promise(async (resolve, reject) => {
-    const databaseUrl = `mongodb://${process.env.MONGO_IP}/${databaseName}`;
-    //const databaseUrl = `mongodb://localhost:27017/${databaseName}`;
+// function databaseExist(databaseName) {
+//   return new Promise(async (resolve, reject) => {
+//     const databaseUrl = `mongodb://${process.env.MONGO_IP}/${databaseName}`;
+//     //const databaseUrl = `mongodb://localhost:27017/${databaseName}`;
 
-    try {
-      const connection = await MongoClient.connect(databaseUrl, {
-        connectTimeoutMS: 500,
-        useNewUrlParser: true,
-      });
+//     try {
+//       const connection = await MongoClient.connect(databaseUrl, {
+//         connectTimeoutMS: 2000,
+//         useNewUrlParser: true,
+//       });
 
-      const admin = connection.db().admin();
+//       const admin = connection.db().admin();
 
-      const listFilter = {
-        nameOnly: true,
-        filter: {
-          name: databaseName,
-        },
-      };
+//       const listFilter = {
+//         nameOnly: true,
+//         filter: {
+//           name: databaseName,
+//         },
+//       };
 
-      const databaseList = await admin.listDatabases(listFilter);
-      const databaseListSize = databaseList.databases.length;
-      databaseListSize > 0 ? resolve(true) : resolve(false);
-    } catch (error) {
-      console.log("error =>  databaseName " + error);
-      reject("error");
-    }
-  });
-}
+//       const databaseList = await admin.listDatabases(listFilter);
+//       const databaseListSize = databaseList.databases.length;
+//       databaseListSize > 0 ? resolve(true) : resolve(false);
+//     } catch (error) {
+//       console.log("error aq =>  databaseName " + error);
+//       reject("error");
+//     }
+//   });
+// }
 
 function connectDatabase(databaseName) {
   return new Promise(async (resolve, reject) => {
     try {
-      const isDatabase = await databaseExist(databaseName);
+      const isDatabase = true;
       if (isDatabase) {
         const databaseUrl = `mongodb://${process.env.MONGO_IP}/${databaseName}`;
-        //const databaseUrl = `mongodb://localhost:27017/${databaseName}`;
-
+        // const databaseUrl = "mongodb://localhost:27017/fifa";
+        console.log("database url => " + databaseUrl);
         const connection = await MongoClient.connect(databaseUrl, {
+          connectTimeoutMS: 2000,
+
           useNewUrlParser: true,
         });
-        const database = connection.db();
+        database = connection.db();
         resolve(database);
       } else {
         throw new Error(
@@ -74,7 +77,7 @@ function connectDatabase(databaseName) {
 function getData(collectionName, aggregation) {
   return new Promise(async (resolve, reject) => {
     try {
-      const database = await connectDatabase(process.env.MONGO_DATABASE);
+      // const database = await connectDatabase(process.env.MONGO_DATABASE);
 
       const result = await database
         .collection(collectionName)
@@ -127,7 +130,7 @@ function getFixtures(fromDate, toDate) {
       let responses = result.map((currentResult) =>
         currentResult.data.results > 0 ? currentResult.data.response : null
       );
-      responses = responses.filter((n) => n);
+      responses = responses.filter((notNull) => notNull);
 
       resolve(responses);
     } catch (error) {
@@ -147,17 +150,19 @@ function getTeamID(teamName, countryName) {
         _id: 1,
       };
 
-      const aggregation = [
-        { $match: match },
-        { $project: project },
-        { $limit: 1 },
-      ];
+      // const aggregation = [
+      //   { $match: match },
+      //   { $project: project },
+      //   { $limit: 1 },
+      // ];
+
+      const aggregation = [{ $match: match }, { $limit: 1 }];
 
       const collectionName = "teams";
       const result = await getData(collectionName, aggregation);
 
       if (result.length > 0) {
-        resolve(result[0]._id);
+        resolve(result[0]);
       } else {
         throw "Not Found ID";
       }
@@ -187,8 +192,13 @@ function createResponse(response) {
           const homeTeamID = await getTeamID(homeTeam.name, leagueInfo.country);
           const awayTeamID = await getTeamID(awayTeam.name, leagueInfo.country);
           if (homeTeamID != null && awayTeamID != null) {
-            homeTeam.id = homeTeamID;
-            awayTeam.id = awayTeamID;
+            homeTeam.id = homeTeamID._id;
+            homeTeam.name = homeTeamID.clubName;
+            homeTeam.logo = homeTeamID.clubLogo;
+
+            awayTeam.id = awayTeamID._id;
+            awayTeam.name = awayTeamID.clubName;
+            awayTeam.logo = awayTeamID.clubLogo;
 
             const currentGameData = {
               gameID: gameID,
@@ -220,6 +230,8 @@ app.get("/getFixtures", async (req, res) => {
     const fromDate = req.query.fromDate;
     const toDate = req.query.toDate;
 
+    await connectDatabase("fifa");
+
     const results = await getFixtures(fromDate, toDate);
 
     let requests = results.map((currentResult) =>
@@ -227,8 +239,7 @@ app.get("/getFixtures", async (req, res) => {
     );
 
     const response = await Promise.all(requests);
-
-    res.status(200).send(results);
+    res.status(200).send(response);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -236,7 +247,7 @@ app.get("/getFixtures", async (req, res) => {
 
 module.exports = {
   app: app,
-  databaseExist: databaseExist,
+  // databaseExist: databaseExist,
   connectDatabase: connectDatabase,
   getData: getData,
   getFixtures: getFixtures,

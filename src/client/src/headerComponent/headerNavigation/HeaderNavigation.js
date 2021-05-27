@@ -11,6 +11,7 @@ function HeaderNavigation(props) {
         isPopup={false}
         imageSource="../visuals/icons/ball.png"
         title="Games"
+        to="/games"
       />
       <HeaderNavigationItem
         isPopup={true}
