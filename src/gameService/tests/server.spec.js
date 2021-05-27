@@ -38,24 +38,11 @@ afterAll(async (done) => {
 });
 
 describe("Game Service Testing", () => {
-  it("Test database existance ", async () => {
-    const existCase = process.env.MONGO_DATABASE;
-
-    const absentCase = "absent";
-
-    await expect(server.databaseExist(existCase)).resolves.toBe(true);
-
-    await expect(server.databaseExist(absentCase)).resolves.toBe(false);
-  });
   it("Test database connection", async () => {
     const existDatabaseName = process.env.MONGO_DATABASE;
-    const absentDatabaseName = "absent";
     await expect(
       server.connectDatabase(existDatabaseName)
     ).resolves.not.toBeNull();
-    await expect(
-      server.connectDatabase(absentDatabaseName)
-    ).rejects.toThrowError();
   });
   it("Test get data", async () => {
     const collectionName = "teams";
