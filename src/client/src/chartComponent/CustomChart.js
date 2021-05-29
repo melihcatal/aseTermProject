@@ -11,13 +11,11 @@ const components = {
 };
 function CustomChart(props) {
   const Chart = components[props.chartInfo.type];
+  console.log("props => " + JSON.stringify(props.options, null, 2));
 
   return (
-    <div id="customChartDiv">
-      <Chart
-        data={props.chartInfo.data}
-        options={props.chartInfo.options || {}}
-      />
+    <div className="customChartDiv" id={props.id || "customChartDiv"}>
+      <Chart data={props.chartInfo.data} options={props.options || null} />
     </div>
   );
 }

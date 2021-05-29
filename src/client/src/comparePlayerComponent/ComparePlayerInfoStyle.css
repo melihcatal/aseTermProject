@@ -1,0 +1,48 @@
+#comparePlayerInfoDiv {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 1%;
+  margin-right: 1%;
+  margin-left: 1%;
+  border-radius: 2%;
+}
+
+#comparePlayerInfoItemDiv {
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 12px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#comparePlayerInfoDiv a {
+  left: 0;
+  width: 10%;
+  float: left;
+  margin-left: -5%;
+  margin-right: 1%;
+}
+#comparePlayerLeagueDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#comparePlayerClubLogo {
+  width: 40%;
+}
+
+#comparePlayerCountryFlag {
+  margin-top: 5%;
+  width: 20%;
+}
+
+#comparePlayerComponentInfoDiv {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}

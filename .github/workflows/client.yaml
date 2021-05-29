@@ -10,6 +10,7 @@ env:
   IMAGE_NAME: 'melihcatal/client'
   MONGOMS_ARCH: x64
   CI: false
+  REACT_APP_FIELD_BACK_COEF : 2.47
 
 
 

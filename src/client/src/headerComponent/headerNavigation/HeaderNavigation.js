@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./HeaderNavigationStyle.css";
 import HeaderNavigationItem from "./headerNavigationItem/HeaderNavigationItem";
-import ComparePopup from "../comparePopup/ComparePopup";
+import ComparePopup from "../../ comparePopup/ComparePopup";
 
 function HeaderNavigation(props) {
   const [isClicked, setClicked] = useState(false);
@@ -11,6 +11,7 @@ function HeaderNavigation(props) {
         isPopup={false}
         imageSource="../visuals/icons/ball.png"
         title="Games"
+        to="/games"
       />
       <HeaderNavigationItem
         isPopup={true}

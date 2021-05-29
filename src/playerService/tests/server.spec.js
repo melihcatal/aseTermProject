@@ -4,6 +4,8 @@ const e = require("express");
 const { MongoClient } = require("mongodb");
 const request = supertest(server.app);
 const sampleUser = require("./sampleUser.json");
+const sampleChart = require("./sampleChart.json");
+
 require("dotenv").config();
 const ObjectId = require("mongodb").ObjectID;
 
@@ -30,7 +32,7 @@ afterAll(async (done) => {
   done();
 });
 
-describe("Database Functions Testing", () => {
+describe("Player Functions Testing", () => {
   it("Test database existance ", async () => {
     const existCase = process.env.MONGO_DATABASE;
 
@@ -66,12 +68,16 @@ describe("Database Functions Testing", () => {
       server.getDataByID(collectionName, absentUserID)
     ).resolves.toContain("Not Found");
   });
+
+  it("Test Getting Chart Function", async () => {
+    await expect(server.getChartData(sampleUser._id)).resolves.toBeTruthy();
+  });
 });
 
-describe("Database Api Testing", () => {
-  it("Get Data By ID", async () => {
-    const existUserID = "608210b8e07e450fd52328dc";
-    const absentUserID = "608210b8e07e450fd52308dc";
+describe("Player Api Testing", () => {
+  it("Get Player By ID", async () => {
+    const existUserID = "60a0f8e82f6bf50887fa73be";
+    const absentUserID = "10a0f8ed2f6bf50887faadc2";
 
     const existCall = await request.get(`/getPlayer/${existUserID}`);
     const absentCall = await request.get(`/getPlayer/${absentUserID}`);

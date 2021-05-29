@@ -1,0 +1,25 @@
+#fieldComponentDiv {
+  background-image: url("https://image.freepik.com/free-vector/soccer-field-vector-illustration_43986-2.jpg");
+  background-position: center;
+  background-size: cover;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  border-radius: 20px;
+  padding: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 100%;
+}
+#compareTeamsFieldsDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-top: 2%;
+  position: relative;
+}

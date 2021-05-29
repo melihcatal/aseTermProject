@@ -1,0 +1,48 @@
+#gamesTable {
+  width: 900px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  table-layout: fixed;
+  margin-bottom: 2%;
+  font-family: "Raleway", sans-serif;
+  font-weight: bolder;
+  font-size: 13px;
+  border-style: none;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 5px rgba(255, 0, 5, 0.1);
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+#leaguesDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  align-items: center;
+}
+
+.gameItemRow img {
+  width: 40px;
+}
+tr.gameItemRow > td {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+tr.gameItemRow:nth-child(even) {
+  background-color: aliceblue;
+}
+.winnerTeam {
+  color: red;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+#LeagueInfoDiv img {
+  width: 40%;
+}
+#LeagueInfoDiv {
+  font-family: "Lora", serif;
+}

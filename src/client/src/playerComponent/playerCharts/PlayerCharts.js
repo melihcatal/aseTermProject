@@ -6,13 +6,18 @@ function PlayerCharts(props) {
   const [chartItems, setChartItems] = useState([]);
   const [isWarning, setWarning] = useState(false);
   const warning = <h4>Error</h4>;
-
   useEffect(() => {
     try {
       if (props.chartInfo.length > 0) {
         let tempArray = [];
         props.chartInfo.map((chartInfo) => {
-          const currentChart = <CustomChart chartInfo={chartInfo} />;
+          const currentChart = (
+            <CustomChart
+              id={props.id ? "lineChart" : null}
+              chartInfo={chartInfo}
+              options={chartInfo.options || null}
+            />
+          );
           tempArray.push(currentChart);
         });
         setChartItems(tempArray);
@@ -20,11 +25,16 @@ function PlayerCharts(props) {
         throw "Error";
       }
     } catch (error) {
+      console.log(error);
       setWarning(true);
     }
   }, []);
 
-  return <div id="playerChartsDiv">{isWarning ? warning : chartItems}</div>;
+  return (
+    <div className="playerChartsDiv" id={props.id || "playerChartsDiv"}>
+      {isWarning ? warning : chartItems}
+    </div>
+  );
 }
 
 export default PlayerCharts;

@@ -10,7 +10,9 @@ function HeaderNavigationItem(props) {
           ? () => {
               props.setClicked(!props.isClicked);
             }
-          : undefined
+          : () => {
+              window.location.href = "/";
+            }
       }
     >
       <img src={props.imageSource} />

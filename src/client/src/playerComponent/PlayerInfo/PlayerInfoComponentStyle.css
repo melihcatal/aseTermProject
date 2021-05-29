@@ -12,6 +12,12 @@
   padding: 1%;
 }
 #playerIdentityDiv div {
-  text-align: left;
   margin-left: 5%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+#playerIdentityCountry {
+  width: 30%;
 }

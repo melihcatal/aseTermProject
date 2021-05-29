@@ -6,7 +6,11 @@ function PlayerIdentiy(props) {
       <img src={props.playerInfo.imageUrl} />
       <div>
         <h3>{props.playerInfo.name}</h3>
-        <h4>{props.playerInfo.nationality}</h4>
+        <img
+          title={props.playerInfo.nationality}
+          id={"playerIdentityCountry"}
+          src={`https://asefifaplayers.s3.eu-central-1.amazonaws.com/countryFlags/${props.playerInfo.nationality}.png`}
+        />
       </div>
     </div>
   );
