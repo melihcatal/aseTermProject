@@ -296,6 +296,7 @@ function getPositionInfo(id) {
         getData(collectionName, currentAggregation)
       );
       const results = Promise.all(requests);
+
       resolve(results);
     } catch (error) {
       reject(error);
@@ -448,13 +449,6 @@ app.get("/comparePlayer", async (req, res) => {
     awayBack = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(
       Math.random() * 255
     )},${Math.floor(Math.random() * 255)},${transCoef})`;
-
-    // const [homePlayerRequest, awayPlayerRequest] = await Promise.all([
-    //   axios.get(`http://localhost:3002/getPlayer/${homePlayer}`),
-    //   axios.get(`http://localhost:3002/getPlayer/${awayPlayer}`),
-    // ]);
-
-    //  const historicalData = await getHistoricalData(homePlayer, awayPlayer);
 
     const [
       homePosition,

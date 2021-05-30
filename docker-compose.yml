@@ -2,107 +2,64 @@ version: "3"
 
 services:
   client:
-    build: 
-      context: src/client
-      dockerfile: ./Dockerfile
     image: melihcatal/client
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
-      REACT_APP_FIELD_BACK_COEF : 0.5
     ports:
       - 3000:3000
-    depends_on: 
-      - searchservice  
+    depends_on:
+      - searchservice
       - playerservice
       - compareteamservice
       - compareplayerservice
       - gameservice
   searchservice:
-    build: 
-      context: src/searchService
-      dockerfile: ./Dockerfile
     image: melihcatal/searchservice
-    environment:
-      MONGO_IP : ${MONGO_IP}
-      MONGO_DATABASE : ${MONGO_DATABASE}
-    ports: 
+
+    ports:
       - 3001:3000
-    depends_on: 
+    depends_on:
       - mongo
   playerservice:
-    build: 
-      context: src/playerService
-      dockerfile: ./Dockerfile
     image: melihcatal/playerservice
-    environment:
-      MONGO_IP : ${MONGO_IP}
-      MONGO_DATABASE : ${MONGO_DATABASE}
-    ports: 
+
+    ports:
       - 3002:3000
-    depends_on: 
+    depends_on:
       - mongo
   compareteamservice:
-    build:
-      context: src/compareTeamService
-      dockerfile: ./Dockerfile 
-    image: melihcatal/compareteamservice 
-    environment: 
-      MONGO_IP: ${MONGO_IP}
-      MONGO_DATABASE: ${MONGO_DATABASE}
-      FIELD_BACK_COEF : ${FIELD_BACK_COEF}
+    image: melihcatal/compareteamservice
+
     ports:
       - 3003:3000
-    depends_on: 
-      - mongo  
+    depends_on:
+      - mongo
   compareplayerservice:
-    build:
-      context: src/comparePlayerService
-      dockerfile: ./Dockerfile
-    image: melihcatal/compareplayerservice    
-    environment: 
-      MONGO_IP: ${MONGO_IP}
-      MONGO_DATABASE: ${MONGO_DATABASE}
-      FIELD_BACK_COEF : ${FIELD_BACK_COEF}
+    image: melihcatal/compareplayerservice
+
     ports:
       - 3004:3000
-    depends_on: 
+    depends_on:
       - mongo
   gameservice:
-    build:
-      context: src/gameService 
-      dockerfile: ./Dockerfile 
     image: melihcatal/gameservice
-    environment: 
-      MONGO_IP: ${MONGO_IP}
-      MONGO_DATABASE: ${MONGO_DATABASE}
-      FIELD_BACK_COEF: ${FIELD_BACK_COEF}
-      FOOTBALL_API_KEY: ${FOOTBALL_API_KEY}
-      FOOTBALL_API_HOST: ${FOOTBALL_API_HOST}
-      FOOTBALL_API_TIMEZONE: ${FOOTBALL_API_TIMEZONE}
-    ports: 
+
+    ports:
       - 3005:3000
-    depends_on: 
-      - mongo  
+    depends_on:
+      - mongo
   mongo:
-    image: mongo
+    image: melihcatal/database
     ports:
       - 27017:27017
-    volumes:
-      - mongo-data:/data/db
   nginx:
-    image: nginx:latest
+    image: melihcatal/nginx
     ports:
       - "8080:8080"
-    volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+
     depends_on:
       - client
       - playerservice
       - searchservice
-      - mongo 
-      - compareteamservice  
+      - mongo
+      - compareteamservice
       - compareplayerservice
       - gameservice
-volumes:
-  mongo-data:
-    driver: local

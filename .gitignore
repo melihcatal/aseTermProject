@@ -3,3 +3,5 @@ test.sh
 template.yml
 .env
 coverage
+cleanFifaData.csv
+teams.csv
