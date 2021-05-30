@@ -3,3 +3,4 @@ test.sh
 template.yml
 .env
 coverage
+.csv
