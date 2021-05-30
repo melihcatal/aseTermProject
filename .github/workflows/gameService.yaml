@@ -49,7 +49,7 @@ jobs:
           image: ${{env.IMAGE_NAME}}
           registry: docker.io
           tags: latest
-          directory: ./src/searchService
-          dockerfile: ./src/searchService/Dockerfile
+          directory: ./src/gameService
+          dockerfile: ./src/gameService/Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
