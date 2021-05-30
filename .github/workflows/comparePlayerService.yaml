@@ -47,7 +47,7 @@ jobs:
           image: ${{env.IMAGE_NAME}}
           registry: docker.io
           tags: latest
-          directory: ./src/playerService
-          dockerfile: ./src/playerService/Dockerfile
+          directory: ./src/comparePlayerService
+          dockerfile: ./src/comparePlayerService/Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
