@@ -44,21 +44,25 @@ class ComparePlayerComponent extends Component {
     return (
       <div>
         {this.state.isLoaded ? (
-          <div>
-            <div id="comparePlayerComponentInfoDiv">
-              <ComparePlayerInfo data={this.state.results.playerInfo[0]} />
-              <ComparePlayerInfo data={this.state.results.playerInfo[1]} />
+          this.state.isError ? (
+            <h3>Error</h3>
+          ) : (
+            <div>
+              <div id="comparePlayerComponentInfoDiv">
+                <ComparePlayerInfo data={this.state.results.playerInfo[0]} />
+                <ComparePlayerInfo data={this.state.results.playerInfo[1]} />
+              </div>
+              <div id="compareTeamsFieldsDiv">
+                <FieldComponent data={this.state.results.homePosition} />
+                <FieldComponent data={this.state.results.awayPosition} />
+              </div>
+              <PlayerCharts
+                chartInfo={this.state.results.historicalData}
+                id="lineChartDiv"
+              />
+              <PlayerCharts chartInfo={this.state.results.radarData} />
             </div>
-            <div id="compareTeamsFieldsDiv">
-              <FieldComponent data={this.state.results.homePosition} />
-              <FieldComponent data={this.state.results.awayPosition} />
-            </div>
-            <PlayerCharts
-              chartInfo={this.state.results.historicalData}
-              id="lineChartDiv"
-            />
-            <PlayerCharts chartInfo={this.state.results.radarData} />
-          </div>
+          )
         ) : (
           <Loading />
         )}

@@ -1,0 +1,27 @@
+name: database
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  IMAGE_NAME: 'melihcatal/database'
+
+
+jobs:      
+  push:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push image to Dockerhub
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: ${{env.IMAGE_NAME}}
+          registry: docker.io
+          tags: latest
+          directory: ./src/mongo
+          dockerfile: ./src/mongo/Dockerfile
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
