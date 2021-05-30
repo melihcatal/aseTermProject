@@ -83,14 +83,26 @@ services:
       - 3005:3000
     depends_on: 
       - mongo  
+  # mongo:
+  #   image: mongo
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - mongo-data:/data/db
   mongo:
-    image: mongo
+    build:
+      context: ./mongo
+      dockerfile: ./Dockerfile
+    image: melihcatal/database 
     ports:
       - 27017:27017
-    volumes:
+    volumes :
       - mongo-data:/data/db
   nginx:
-    image: nginx:latest
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: melihcatal/nginx
     ports:
       - "8080:8080"
     volumes:
